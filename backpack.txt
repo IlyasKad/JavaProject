@@ -1,2 +1,4 @@
-food.Drinks;MILK;5.0;100.0;1000.0
-food.Drinks;CAPPUCCINO;5.0;100.0;1000.0
+food.Drinks;MILK;10.0;2000.0
+food.Drinks;CAPPUCCINO;5.0;1000.0
+travel.Dishes;PLATE;5.0
+food.DryRation;BREAD;5.0;1000.0

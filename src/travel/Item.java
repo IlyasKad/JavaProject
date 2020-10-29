@@ -1,13 +1,11 @@
 package travel;
 
 public abstract class Item {
-    protected double weight;// TODO
-    protected double volume;
+    protected double weight;
     protected String name;
 
-    public Item(double weight, double volume) {
+    public Item(double weight) {
         this.weight = weight;
-        this.volume = volume;
     }
 
     @Override
@@ -15,11 +13,9 @@ public abstract class Item {
         if (object == this) {
             return true;
         }
-
         if (object == null || object.getClass() != this.getClass()) {
             return false;
         }
-
         Item item = (Item) object;
         return item.name.equals(this.name);
     }

@@ -1,8 +1,8 @@
 package travel;
 
 public class Tent extends Item{
-    public Tent(double weight, double volume) {
-        super(weight, volume);
+    public Tent(double weight) {
+        super(weight);
     }
 
     @Override

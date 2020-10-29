@@ -1,42 +1,43 @@
-
+import food.Drinks;
+import food.DryRation;
 import travel.*;
 
-import java.io.IOException;
+import java.util.Iterator;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-//        Food milk = new Drinks("milk", 5,100, 1000);
-//        Food tea = new Drinks("tea", 2,100, 1000);
-//        Food bread = new DryRation("bread", 5,100, 1000);
-//        Pill pill = new Pill("pill", 0.1, 1);
-
-        Backpack backpack1 = new Backpack("backpack1", 10, 10, StateBackpack.EMPTY);
-        Backpack backpack2 = new Backpack("backpack2", 10, 10, StateBackpack.EMPTY);
-//        Tent tent = new Tent("nicolas", 10, 10);
+    public static void main(String[] args) {
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+        Backpack backpack2 = new Backpack("backpack2", 10, 25);
+        Backpack backpack3 = new Backpack("backpack3", 10, 25);
 
         TravelSet travelSet1 = new TravelSet();
 
         // add items to travel set
-//        backpack1.addItem(milk);
-//        backpack1.addItem(Drinks.Type.MILK.toString(), 5,100, 1000);
-        backpack1.addDrink(food.Drinks.Type.MILK, 5,100, 1000);
-        backpack1.addDrink(food.Drinks.Type.MILK, 5,100, 1000);
-        backpack1.addDrink(food.Drinks.Type.CAPPUCCINO, 5,100, 1000);
-//        backpack1.addDrink(Drinks.Type.valueOf("MILK"), 5,100, 1000);
+        try {
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000);
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000);
+            backpack1.add(Drinks.Type.valueOf("CAPPUCCINO"), 5, 1000);
+            backpack1.add(Dishes.Type.valueOf("PLATE"),5);
+            backpack1.add(DryRation.Type.valueOf("BREAD"), 5, 1000);
+        } catch(Exception e){
+            System.out.println(e);
+        }
 
-//        backpack1.addItem(tea);
-//        backpack1.addItem(bread);
+
+        try {
+            backpack3.add(food.Drinks.Type.CAPPUCCINO, 5, 1000);
+            backpack3.add(food.Drinks.Type.MILK, 5, 1000);
+            backpack3.add(food.Drinks.Type.MILK, 5, 1000);
+            backpack3.add(Dishes.Type.valueOf("PLATE"), 5);
+            backpack3.add(DryRation.Type.valueOf("BREAD"), 5, 1000);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
 
         travelSet1.addItem(backpack1);
-//        travelSet1.addItem(tent);
 
-
-
-//        travelSet1.add('milk', 5, 100, 1000);
-//        String requiredItems = "milk,tea,bread";
-//        for (String nameItem: requiredItems.split(",")) {
-//            System.out.println(nameItem);
-//        }
 
         // eat food and pill
 //        bread.eat(2);
@@ -54,9 +55,25 @@ public class Main {
         // remove food from travel set
 //        backpack1.deleteItem(bread);
 //        System.out.println(travelSet1);
-        backpack1.saveToFile("backpack.txt");
-        backpack2.openFromFile("backpack.txt");
-        System.out.println(backpack2);
+
+
+
+
+        try{
+            backpack1.saveToFile("backpack.txt");
+            backpack2.openFromFile("backpack.txt");
+        } catch(Exception exp){
+            System.out.println(exp);
+        }
+        System.out.println(backpack3);
+        System.out.println(backpack1.equals(backpack2));;
+
+
+        Iterator it = backpack1.getIterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+
     }
 }
 

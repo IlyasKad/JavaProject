@@ -6,8 +6,8 @@ import travel.Item;
 public abstract class Food extends Item implements Eatable {
     public double calories;
 
-    public Food(double weight, double volume, double calories) {
-        super(weight, volume);
+    public Food(double weight, double calories) {
+        super(weight);
         this.calories = calories;
     }
 }
