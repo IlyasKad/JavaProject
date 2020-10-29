@@ -5,13 +5,13 @@ public class Ointment extends Medicine{
         OINTMENTONE, OINTMENTTWO
     }
 
-    public Ointment(Type type, double weight, double volume) {
-        super(weight, volume);
+    public Ointment(Type type, double weight) {
+        super(weight);
         name = type.toString();
     }
 
     @Override
     public String toString() {
-        return "Ointment: " + name + "," + weight + "," + volume + ".";
+        return "Ointment: " + name + "," + weight + ".";
     }
 }

@@ -6,8 +6,8 @@ public class Pill extends Medicine implements Eatable {
     public enum Type {
         ASPIRIN, NOSHPA
     }
-    public Pill(Type type, double weight, double volume) {
-        super(weight, volume);
+    public Pill(Type type, double weight) {
+        super(weight);
         name = type.toString();
     }
 
@@ -18,7 +18,7 @@ public class Pill extends Medicine implements Eatable {
 
     @Override
     public String toString() {
-        return "Pill: " + name + "," + weight + "," + volume + ".";
+        return "Pill: " + name + "," + weight + ".";
     }
 
 
