@@ -5,7 +5,7 @@ public enum StateBackpack {
     NOT_FULL ("not full"),
     FULL ("full");
 
-    private String name;
+    private final String name;
 
     StateBackpack(String name) {
         this.name = name;
