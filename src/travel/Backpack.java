@@ -12,6 +12,7 @@ public class Backpack extends Item{
     private StateBackpack stateBackpack;
     private final ArrayList<Item> items;
     private final double maxWeight;
+    private ArrayList<Tourist> whoCarry;
 
     public Backpack(String name, double weight, double maxWeight) {
         super(weight);
@@ -19,6 +20,7 @@ public class Backpack extends Item{
         this.name = name;
         items = new ArrayList<>();
         this.maxWeight = maxWeight;
+        whoCarry = new ArrayList<>();
     }
 
     public StateBackpack getStateBackpack() {
@@ -29,17 +31,22 @@ public class Backpack extends Item{
         this.stateBackpack = stateBackpack;
     }
 
-    public boolean addItem(Item item) {
-        if (items.contains(item)) {
-            return false;
-        }
-        items.add(item);
-        return true;
+    public Iterator<Item> getIterator() { // итератор
+       return items.iterator();
     }
 
-    public Iterator getIterator() {
-        Iterator it = items.iterator();
-        return  it;
+    public ArrayList<Tourist> getWhoCarry() {
+        return whoCarry;
+    }
+
+    public void setWhoCarry(ArrayList<Tourist> whoCarry) {
+        this.whoCarry = whoCarry;
+    }
+
+    public void addTouristWhoCarry(Tourist tourist) {
+        if (!whoCarry.contains(tourist)) {  // используется неперегруженная версия equals
+            whoCarry.add(tourist);
+        }
     }
 
     public void add(Drinks.Type type, double weight, double calories) throws ExceptionLimitOversize {
@@ -53,8 +60,9 @@ public class Backpack extends Item{
     }
 
     private void addFood(Food food) throws ExceptionLimitOversize {
-        if (this.weight > maxWeight - food.weight) {
-            throw new ExceptionLimitOversize("Oversize");
+        if (this.weight + food.weight > maxWeight ) { // 24 кг + 2 кг > 25 кг
+            throw new ExceptionLimitOversize("Oversize of limit");
+//            throw new ExceptionLimitOversize(weight, maxWeight);
         }
         Item itemFound = items.stream().filter(item -> item.name.equals(food.name)).findFirst().orElse(null);
         if (itemFound != null) {
@@ -70,6 +78,7 @@ public class Backpack extends Item{
     public void add(Dishes.Type type, double weight) throws ExceptionLimitOversize {
         if (this.weight > maxWeight - weight) {
             throw new ExceptionLimitOversize("Oversize");
+//            throw new ExceptionLimitOversize(weight, maxWeight);
         }
         Dishes dishes = new Dishes(type, weight);
         Item found = items.stream().filter(item -> item.name.equals(type.toString())).findFirst().orElse(null);
@@ -82,6 +91,15 @@ public class Backpack extends Item{
         changeState();
     }
 
+    private void changeState() {
+        if (items.size() == 0) {
+            stateBackpack = StateBackpack.EMPTY;
+        } else if (weight == maxWeight) {
+            stateBackpack = StateBackpack.FULL;
+        } else {
+            stateBackpack = StateBackpack.NOT_FULL;
+        }
+    }
 
     public boolean deleteItem(Item item) {
         if (items.contains(item)) {
@@ -93,15 +111,6 @@ public class Backpack extends Item{
         return false;
     }
 
-    private void changeState() {
-        if (items.size() == 0) {
-            stateBackpack = StateBackpack.EMPTY;
-        } else if (weight == maxWeight) {
-            stateBackpack = StateBackpack.FULL;
-        } else {
-            stateBackpack = StateBackpack.NOT_FULL;
-        }
-    }
 
     @Override
     public String toString() {
@@ -125,9 +134,9 @@ public class Backpack extends Item{
         try {
             String line;
             String[] arr ;
-            objReader = new BufferedReader(new FileReader(fileName));
+            objReader = new BufferedReader(new FileReader(fileName)); // открывается файл для чтения
             while ((line = objReader.readLine()) != null) {
-                arr = line.split(";");
+                arr = line.split(";"); // использование split()
                 if (arr[0].equals(food.Drinks.class.getName())) {
                     add(Drinks.Type.valueOf(arr[1]), Double.parseDouble(arr[2]), Double.parseDouble(arr[3]));
                 } else if (arr[0].equals(food.DryRation.class.getName())) {

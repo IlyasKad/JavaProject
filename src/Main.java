@@ -2,42 +2,53 @@ import food.Drinks;
 import food.DryRation;
 import travel.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
+        Tourist tourist1 = new Tourist("Nick");
+        Tourist tourist2 = new Tourist("Nick");
+        Tourist tourist3 = new Tourist("Fox");
+
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         Backpack backpack2 = new Backpack("backpack2", 10, 25);
         Backpack backpack3 = new Backpack("backpack3", 10, 25);
 
         TravelSet travelSet1 = new TravelSet();
 
-        // add items to travel set
+
+        backpack1.setWhoCarry(new ArrayList<>(Arrays.asList(tourist1, tourist2))); // ассоциация
+
+
+        backpack1.addTouristWhoCarry(tourist3); // неперевизначений метод equals
+
+        // add items to backpack1
         try {
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000);
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000);
             backpack1.add(Drinks.Type.valueOf("CAPPUCCINO"), 5, 1000);
             backpack1.add(Dishes.Type.valueOf("PLATE"),5);
-            backpack1.add(DryRation.Type.valueOf("BREAD"), 5, 1000);
+            backpack1.add(DryRation.Type.valueOf("BREAD"), 25, 1000);
         } catch(Exception e){
             System.out.println(e);
         }
 
-
+        // add items to backpack3
         try {
-            backpack3.add(food.Drinks.Type.CAPPUCCINO, 5, 1000);
-            backpack3.add(food.Drinks.Type.MILK, 5, 1000);
-            backpack3.add(food.Drinks.Type.MILK, 5, 1000);
-            backpack3.add(Dishes.Type.valueOf("PLATE"), 5);
-            backpack3.add(DryRation.Type.valueOf("BREAD"), 5, 1000);
+            backpack3.add(Drinks.Type.TEA, 5, 1000);
+            backpack3.add(Drinks.Type.MILK, 5, 1000);
+            backpack3.add(Dishes.Type.PLATE, 5);
+            backpack3.add(DryRation.Type.BREAD, 5, 1000);
         }
         catch(Exception e){
             System.out.println(e);
         }
 
-
         travelSet1.addItem(backpack1);
-
+        travelSet1.addItem(backpack2);
+        travelSet1.addItem(backpack3);
 
         // eat food and pill
 //        bread.eat(2);
@@ -48,28 +59,30 @@ public class Main {
 //        System.out.println(pill.getWeight());
 //        System.out.println(pill.getVolume());
 
-        System.out.println(backpack1.getStateBackpack());
-        System.out.println(backpack1.getStateBackpack().getName());
+//        System.out.println(backpack1.getStateBackpack());
+//        System.out.println(backpack1.getStateBackpack().getName());
 
         System.out.println(travelSet1);
+        System.out.println();
         // remove food from travel set
 //        backpack1.deleteItem(bread);
 //        System.out.println(travelSet1);
 
 
 
-
+        // запись в файл и считывание
         try{
             backpack1.saveToFile("backpack.txt");
             backpack2.openFromFile("backpack.txt");
         } catch(Exception exp){
             System.out.println(exp);
         }
-        System.out.println(backpack3);
-        System.out.println(backpack1.equals(backpack2));;
+        System.out.println(backpack2);
+        System.out.println("Equals of backpacks: " + backpack1.equals(backpack2)); // перевизначений метод equals
 
 
-        Iterator it = backpack1.getIterator();
+        System.out.println("List with iterator: ");
+        Iterator<Item> it = backpack1.getIterator();
         while (it.hasNext()) {
             System.out.println(it.next());
         }
