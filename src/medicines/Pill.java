@@ -4,7 +4,7 @@ import travel.Eatable;
 
 public class Pill extends Medicine implements Eatable {
     public enum Type {
-        ASPIRIN, NOSHPA
+        ASPIRIN, LOPERAMIDE
     }
     public Pill(Type type, double weight) {
         super(weight);
@@ -20,6 +20,4 @@ public class Pill extends Medicine implements Eatable {
     public String toString() {
         return "Pill: " + name + "," + weight + ".";
     }
-
-
 }

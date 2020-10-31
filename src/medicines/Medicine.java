@@ -11,6 +11,4 @@ public class Medicine extends Item {
     public String toStringForFile() {
         return null;
     }
-
-
 }

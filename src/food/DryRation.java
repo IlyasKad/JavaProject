@@ -36,8 +36,7 @@ public class DryRation extends Food{
         }
 
         DryRation dryRation = (DryRation) object;
-        if (dryRation.name.equals(name) && dryRation.weight == weight &&
-                dryRation.calories == calories) {
+        if (dryRation.name.equals(name) && dryRation.weight == weight && dryRation.calories == calories) {
             return  true;
         }
         return false;

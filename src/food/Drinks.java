@@ -3,7 +3,7 @@ package food;
 public class Drinks extends Food {
 
     public enum Type {
-        MILK, TEA, COFFEE, CAPPUCCINO, BEER
+        MILK, TEA, COFFEE, CAPPUCCINO
     }
 
     public Drinks(Type type, double weight, double calories) {

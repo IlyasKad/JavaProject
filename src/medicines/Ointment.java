@@ -2,7 +2,7 @@ package medicines;
 
 public class Ointment extends Medicine{
     public enum Type {
-        OINTMENTONE, OINTMENTTWO
+        LEVOMEKOL, KETONAL
     }
 
     public Ointment(Type type, double weight) {
