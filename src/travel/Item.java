@@ -1,7 +1,9 @@
 package travel;
 
+import food.DryRation;
+
 public abstract class Item {
-    protected double weight;
+    public double weight;
     protected String name;
 
     public Item(double weight) {
@@ -18,6 +20,10 @@ public abstract class Item {
         }
         Item item = (Item) object;
         return item.name.equals(this.name);
+    }
+
+    public void sumItem(Item item){
+        this.weight += item.weight;
     }
 
     public abstract String toStringForFile();

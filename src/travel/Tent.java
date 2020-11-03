@@ -14,4 +14,5 @@ public class Tent extends Item{
     public String toString() {
         return "Tent: " + name + ".";
     }
+
 }

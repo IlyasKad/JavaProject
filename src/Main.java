@@ -26,29 +26,31 @@ public class Main {
 
         // add items to backpack1
         try {
-            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000);
-            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000);
-            backpack1.add(Drinks.Type.valueOf("CAPPUCCINO"), 5, 1000);
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("WATER"), 1, 0, 1);
             backpack1.add(Dishes.Type.valueOf("PLATE"),5);
-            backpack1.add(DryRation.Type.valueOf("BREAD"), 25, 1000);
+            backpack1.add(DryRation.Type.valueOf("BREAD"), 2, 1000);
         } catch(Exception e){
             System.out.println(e);
         }
 
         // add items to backpack3
         try {
-            backpack3.add(Drinks.Type.TEA, 5, 1000);
-            backpack3.add(Drinks.Type.MILK, 5, 1000);
-            backpack3.add(Dishes.Type.PLATE, 5);
-            backpack3.add(DryRation.Type.BREAD, 5, 1000);
-        }
-        catch(Exception e){
+            backpack3.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack3.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack3.add(Drinks.Type.valueOf("CAPPUCCINO"), 1, 1000, 1);
+            backpack3.add(Dishes.Type.valueOf("PLATE"),5);
+            backpack3.add(DryRation.Type.valueOf("BREAD"), 2, 1000);
+            backpack3.add(Drinks.Type.valueOf("COFFEE"), 0.5, 1000, 1);
+        } catch(Exception e){
             System.out.println(e);
         }
 
         travelSet1.addItem(backpack1);
         travelSet1.addItem(backpack2);
         travelSet1.addItem(backpack3);
+
 
         // eat food and pill
 //        bread.eat(2);
@@ -76,9 +78,10 @@ public class Main {
             backpack2.openFromFile("backpack.txt");
         } catch(Exception exp){
             System.out.println(exp);
+
         }
         System.out.println(backpack2);
-        System.out.println("Equals of backpacks: " + backpack1.equals(backpack2)); // перевизначений метод equals
+        System.out.println("Equals of backpacks: " + backpack1.equalsByContent(backpack2)); // перевизначений метод equals
 
 
         System.out.println("List with iterator: ");

@@ -1,7 +1,9 @@
 package travel;
 
+import food.DryRation;
+
 public class Dishes extends Item {
-    public enum Type {
+    public enum Type implements ItemType{
         PLATE, FORK
     }
 
@@ -34,5 +36,11 @@ public class Dishes extends Item {
             return  true;
         }
         return false;
+    }
+
+    @Override
+    public void sumItem(Item item) {
+        Dishes dishes = (Dishes) item;
+        this.weight += dishes.weight;
     }
 }
