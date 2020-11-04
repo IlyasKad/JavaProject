@@ -24,6 +24,8 @@ public class Main {
 
         backpack1.addTouristWhoCarry(tourist3); // неперевизначений метод equals
 
+
+
         // add items to backpack1
         try {
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
@@ -47,6 +49,11 @@ public class Main {
             System.out.println(e);
         }
 
+
+
+
+
+
         travelSet1.addItem(backpack1);
         travelSet1.addItem(backpack2);
         travelSet1.addItem(backpack3);
@@ -67,28 +74,28 @@ public class Main {
         System.out.println(travelSet1);
         System.out.println();
         // remove food from travel set
-//        backpack1.deleteItem(bread);
+//        backpack1.deleteItem(Drinks.Type.MILK);
 //        System.out.println(travelSet1);
 
 
 
         // запись в файл и считывание
-        try{
-            backpack1.saveToFile("backpack.txt");
-            backpack2.openFromFile("backpack.txt");
-        } catch(Exception exp){
-            System.out.println(exp);
+//        try{
+//            backpack1.saveToFile("backpack.txt");
+//            backpack2.openFromFile("backpack.txt");
+//        } catch(Exception exp){
+//            System.out.println(exp);
+//
+//        }
+//        System.out.println(backpack2);
+        System.out.println("Equals of backpacks: " + backpack1.equalsByContent(backpack3)); // перевизначений метод equals
 
-        }
-        System.out.println(backpack2);
-        System.out.println("Equals of backpacks: " + backpack1.equalsByContent(backpack2)); // перевизначений метод equals
 
-
-        System.out.println("List with iterator: ");
-        Iterator<Item> it = backpack1.getIterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
+//        System.out.println("List with iterator: ");
+//        Iterator<Item> it = backpack1.getIterator();
+//        while (it.hasNext()) {
+//            System.out.println(it.next());
+//        }
 
     }
 }

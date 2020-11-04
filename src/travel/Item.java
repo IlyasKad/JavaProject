@@ -1,7 +1,5 @@
 package travel;
 
-import food.DryRation;
-
 public abstract class Item {
     public double weight;
     protected String name;
@@ -26,6 +24,6 @@ public abstract class Item {
         this.weight += item.weight;
     }
 
-    public abstract String toStringForFile();
+//    public abstract String toStringForFile();
 
 }

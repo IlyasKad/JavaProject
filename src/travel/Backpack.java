@@ -22,13 +22,13 @@ public class Backpack extends Item{
         whoCarry = new ArrayList<>();
     }
 
-    public StateBackpack getStateBackpack() {
-        return stateBackpack;
-    }
+//    public StateBackpack getStateBackpack() {
+//        return stateBackpack;
+//    }
 
-    public void setStateBackpack(StateBackpack stateBackpack) {
-        this.stateBackpack = stateBackpack;
-    }
+//    public void setStateBackpack(StateBackpack stateBackpack) {
+//        this.stateBackpack = stateBackpack;
+//    }
 
     public Iterator<Item> getIterator() { // итератор
        return items.iterator();
@@ -129,10 +129,6 @@ public class Backpack extends Item{
 //        changeState();
 //    }
 
-    @Override
-    public void sumItem(Item item) {
-        this.weight += item.weight;
-    }
 
     private void changeState() {
         if (items.size() == 0) {
@@ -144,10 +140,11 @@ public class Backpack extends Item{
         }
     }
 
-    public boolean deleteItem(Item item) {
-        if (items.contains(item)) {
-            items.remove(item);
-            weight -= item.weight;
+    public boolean deleteItem(ItemType type) {
+        Item itemFound = items.stream().filter(tempItem -> tempItem.name.equals(type.toString())).findFirst().orElse(null);
+        if (itemFound != null) {
+            items.remove(itemFound);
+            weight -= itemFound.weight;
             return true;
         }
         changeState();
@@ -167,50 +164,50 @@ public class Backpack extends Item{
         return builder.toString();
     }
 
-    public void saveToFile(String fileName) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-        for (Item item: items) {
-            writer.write(item.toStringForFile());
-        }
-        writer.close();
-    }
+//    public void saveToFile(String fileName) throws IOException {
+//        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+//        for (Item item: items) {
+//            writer.write(item.toStringForFile());
+//        }
+//        writer.close();
+//    }
+//
+//    public void openFromFile(String fileName) throws ExceptionLimitOversize {
+//        BufferedReader objReader = null;
+//        try {
+//            String line;
+//            String[] arr ;
+//            objReader = new BufferedReader(new FileReader(fileName)); // открывается файл для чтения
+//            while ((line = objReader.readLine()) != null) {
+//                arr = line.split(";"); // использование split()
+//                if (arr[0].equals(food.Drinks.class.getName())) {
+//                    add(Drinks.Type.valueOf(arr[1]), Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
+//                } else if (arr[0].equals(food.DryRation.class.getName())) {
+//                    add(DryRation.Type.valueOf(arr[1]), Double.parseDouble(arr[2]), Double.parseDouble(arr[3]));
+//                } else if (arr[0].equals(travel.Dishes.class.getName())) {
+//                    add(Dishes.Type.valueOf(arr[1]), Double.parseDouble(arr[2]));
+//                }
+//
+//            }
+//        } catch (IOException e) {
+//            System.out.println(e);
+//        } finally {
+//            try {
+//                if (objReader != null) {
+//                    objReader.close();
+//                }
+//            } catch (IOException ex) {
+//                System.out.println(ex);
+//            }
+//        }
+//
+//    }
 
-    public void openFromFile(String fileName) throws ExceptionLimitOversize {
-        BufferedReader objReader = null;
-        try {
-            String line;
-            String[] arr ;
-            objReader = new BufferedReader(new FileReader(fileName)); // открывается файл для чтения
-            while ((line = objReader.readLine()) != null) {
-                arr = line.split(";"); // использование split()
-                if (arr[0].equals(food.Drinks.class.getName())) {
-                    add(Drinks.Type.valueOf(arr[1]), Double.parseDouble(arr[2]), Double.parseDouble(arr[3]), Double.parseDouble(arr[4]));
-                } else if (arr[0].equals(food.DryRation.class.getName())) {
-                    add(DryRation.Type.valueOf(arr[1]), Double.parseDouble(arr[2]), Double.parseDouble(arr[3]));
-                } else if (arr[0].equals(travel.Dishes.class.getName())) {
-                    add(Dishes.Type.valueOf(arr[1]), Double.parseDouble(arr[2]));
-                }
 
-            }
-        } catch (IOException e) {
-            System.out.println(e);
-        } finally {
-            try {
-                if (objReader != null) {
-                    objReader.close();
-                }
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
-        }
-
-    }
-
-
-    @Override
-    public String toStringForFile() {
-        return "";
-    }
+//    @Override
+//    public String toStringForFile() {
+//        return "";
+//    }
 
 
     public boolean equalsByContent(Object object) {

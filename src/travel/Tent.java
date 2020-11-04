@@ -5,10 +5,10 @@ public class Tent extends Item{
         super(weight);
     }
 
-    @Override
-    public String toStringForFile() {
-        return null;
-    }
+//    @Override
+//    public String toStringForFile() {
+//        return null;
+//    }
 
     @Override
     public String toString() {

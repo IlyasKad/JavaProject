@@ -18,9 +18,9 @@ public class Dishes extends Item {
         return "Dishes: " + name + "," + weight + ".";
     }
 
-    public String toStringForFile() {
-        return getClass().getName() + ";" + name + ";" + weight + "\n";
-    }
+//    public String toStringForFile() {
+//        return getClass().getName() + ";" + name + ";" + weight + "\n";
+//    }
 
     @Override
     public boolean equals(Object object) {

@@ -15,7 +15,6 @@ public class Drinks extends Food {
         this.volume = volume;
     }
 
-
     @Override
     public void eat(double weightToEat) {
         weight = weight - weightToEat;
@@ -26,9 +25,9 @@ public class Drinks extends Food {
         return "Drink: " + name + "," + weight + "," + calories + "," + volume + ".";
     }
 
-    public String toStringForFile() {
-        return getClass().getName() + ";" + name + ";" + weight + ";" + calories + ";" + volume + "\n";
-    }
+//    public String toStringForFile() {
+//        return getClass().getName() + ";" + name + ";" + weight + ";" + calories + ";" + volume + "\n";
+//    }
 
     @Override
     public boolean equals(Object object) {
