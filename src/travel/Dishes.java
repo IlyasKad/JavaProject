@@ -1,7 +1,5 @@
 package travel;
 
-import food.DryRation;
-
 public class Dishes extends Item {
     public enum Type implements ItemType{
         PLATE, FORK
@@ -18,12 +16,9 @@ public class Dishes extends Item {
         return "Dishes: " + name + "," + weight + ".";
     }
 
-    public String toStringForFile() {
-        return getClass().getName() + ";" + name + ";" + weight + "\n";
-    }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object object) { // используется перегруженная версия equals
         if (object == this) {
             return true;
         }

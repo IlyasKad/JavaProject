@@ -24,12 +24,6 @@ public class DryRation extends Food{
     }
 
     @Override
-    public String toStringForFile() {
-        return getClass().getName() + ";" + name + ";" + weight + ";" + calories + "\n";
-    }
-
-
-    @Override
     public boolean equals(Object object) {
         if (object == this) {
             return true;
