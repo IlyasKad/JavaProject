@@ -4,6 +4,8 @@ import food.Drinks;
 import food.DryRation;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +21,7 @@ class BackpackTest {
         backpack1.addTouristWhoCarry(tourist1); // неперевизначений метод equals
 
         //THEN
-        Tourist actual = backpack1.getWhoCarry().get(0);
+        Tourist actual = backpack1.whoCarry.get(0);
         Tourist expected = tourist1;
         assertEquals(expected, actual);
     }
@@ -149,5 +151,55 @@ class BackpackTest {
         //THEN
         assertFalse(actual);
 
+    }
+
+    @Test
+    void sumItem() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 100);
+        Backpack backpack2 = new Backpack("backpack2", 10, 100);
+
+        try {
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("WATER"), 1, 0, 1);
+
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
+        try {
+            backpack2.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack2.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack2.add(Drinks.Type.valueOf("CAPPUCCINO"), 1, 1000, 1);
+            backpack2.add(Dishes.Type.valueOf("PLATE"),2);
+
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
+        //WHEN
+
+
+        backpack1.sumItem(backpack2);
+
+        //THEN
+        Backpack backpack3 = new Backpack("backpack1", 10, 100);
+
+        try {
+            backpack3.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack3.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack3.add(Drinks.Type.valueOf("WATER"), 1, 0, 1);
+            backpack3.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack3.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack3.add(Drinks.Type.valueOf("CAPPUCCINO"), 1, 1000, 1);
+            backpack3.add(Dishes.Type.valueOf("PLATE"),2);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
+
+
+        assertTrue(backpack1.equalsByContent(backpack3));
     }
 }
