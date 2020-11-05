@@ -3,7 +3,7 @@ package travel;
 import java.util.ArrayList;
 
 public class TravelSet {
-    private final ArrayList<Item> items;
+    public ArrayList<Item> items;
 
     public TravelSet() {
         this.items = new ArrayList<>();

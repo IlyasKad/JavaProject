@@ -1,16 +1,19 @@
 package food;
 
-public class Drinks extends Food {
+import travel.Item;
+import travel.ItemType;
 
-    public enum Type {
-        MILK, TEA, COFFEE, CAPPUCCINO
+public class Drinks extends Food {
+    private double volume;
+    public enum Type implements ItemType {
+        MILK, TEA, COFFEE, CAPPUCCINO, WATER
     }
 
-    public Drinks(Type type, double weight, double calories) {
+    public Drinks(Type type, double weight, double calories, double volume) {
         super(weight, calories);
         name = type.toString();
+        this.volume = volume;
     }
-
 
     @Override
     public void eat(double weightToEat) {
@@ -19,11 +22,7 @@ public class Drinks extends Food {
 
     @Override
     public String toString() {
-        return "Drink: " + name + "," + weight + "," + calories + ".";
-    }
-
-    public String toStringForFile() {
-        return getClass().getName() + ";" + name + ";" + weight + ";" + calories + "\n";
+        return "Drink: " + name + "," + weight + "," + calories + "," + volume + ".";
     }
 
     @Override
@@ -40,5 +39,12 @@ public class Drinks extends Food {
             return  true;
         }
         return false;
+    }
+
+    @Override
+    public void sumItem(Item item) {
+        Drinks drinks = (Drinks)item;
+        this.weight += drinks.weight;
+        this.calories += drinks.calories;
     }
 }
