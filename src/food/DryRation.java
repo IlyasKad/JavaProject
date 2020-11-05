@@ -1,10 +1,10 @@
 package food;
 
 import travel.Item;
-import travel.ItemType;
+import travel.Typeable;
 
 public class DryRation extends Food{
-    public enum Type implements ItemType {
+    public enum Type implements Typeable {
         BREAD, ORANGE
     }
 
@@ -24,7 +24,7 @@ public class DryRation extends Food{
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object object) { // override equals
         if (object == this) {
             return true;
         }
