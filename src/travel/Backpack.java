@@ -21,12 +21,12 @@ public class Backpack extends Item{
         whoCarry = new ArrayList<>();
     }
 
-    public Iterator<Item> getIterator() { // итератор
+    public Iterator<Item> getIterator() {
        return items.iterator();
     }
 
     public void addTouristWhoCarry(Tourist tourist) {
-        if (!whoCarry.contains(tourist)) {  // используется неперегруженная версия equals
+        if (!whoCarry.contains(tourist)) {  // method equals
             whoCarry.add(tourist);
         }
     }
@@ -48,7 +48,7 @@ public class Backpack extends Item{
 //        addItem(dishes);
 //    }
 
-    public void add(ItemType type, double ... args) throws ExceptionLimitOversize {
+    public void add(Typeable type, double ... args) throws ExceptionLimitOversize {
         Item item = null;
         if (type.getClass() == Drinks.Type.class) {
             item = new Drinks((Drinks.Type)type, args[0], args[1], args[2]);
@@ -57,7 +57,6 @@ public class Backpack extends Item{
         } else if(type.getClass() == Dishes.Type.class) {
             item = new Dishes((Dishes.Type)type, args[0]);
         }
-//        item = type.getClass().getConstructor(args);
         addItem(item);
     }
 
@@ -66,7 +65,6 @@ public class Backpack extends Item{
             return;
         }
         if (this.weight + item.weight > maxWeight ) { // 24 кг + 2 кг > 25 кг
-//            throw new ExceptionLimitOversize("Oversize of limit");
             throw new ExceptionLimitOversize(weight, maxWeight);
         }
         weight += item.weight;
@@ -125,7 +123,7 @@ public class Backpack extends Item{
         }
     }
 
-    public boolean deleteItem(ItemType type) {
+    public boolean deleteItem(Typeable type) {
         Item itemFound = items.stream().filter(tempItem -> tempItem.name.equals(type.toString())).findFirst().orElse(null);
         if (itemFound != null) {
             items.remove(itemFound);
@@ -148,10 +146,12 @@ public class Backpack extends Item{
         return builder.toString();
     }
 
+
     public boolean equalsByContent(Object object) {
         if (object == this) {
             return true;
         }
+
         if (object == null || object.getClass() != this.getClass()) {
             return false;
         }
@@ -161,7 +161,7 @@ public class Backpack extends Item{
             return false;
         }
         for (Item i: items) {
-            if (!backpack.items.contains(i)) {
+            if (!backpack.items.contains(i)) { // use override equals
                 return false;
             }
         }

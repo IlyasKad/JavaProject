@@ -1,7 +1,7 @@
 package travel;
 
 public class Dishes extends Item {
-    public enum Type implements ItemType{
+    public enum Type implements Typeable {
         PLATE, FORK
     }
 
@@ -18,7 +18,7 @@ public class Dishes extends Item {
 
 
     @Override
-    public boolean equals(Object object) { // используется перегруженная версия equals
+    public boolean equals(Object object) { // override equals
         if (object == this) {
             return true;
         }
