@@ -1,11 +1,11 @@
 package food;
 
 import travel.Item;
-import travel.ItemType;
+import travel.Typeable;
 
 public class Drinks extends Food {
     private double volume;
-    public enum Type implements ItemType {
+    public enum Type implements Typeable {
         MILK, TEA, COFFEE, CAPPUCCINO, WATER
     }
 
@@ -26,7 +26,7 @@ public class Drinks extends Food {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object object) { // override equals
         if (object == this) {
             return true;
         }

@@ -18,38 +18,32 @@ public class Main {
 
         TravelSet travelSet1 = new TravelSet();
 
-        backpack1.whoCarry = new ArrayList<>(Arrays.asList(tourist1, tourist2)); // ассоциация
+        backpack1.whoCarry = new ArrayList<>(Arrays.asList(tourist1, tourist2));
+        backpack1.addTouristWhoCarry(tourist3); // method equals
 
-        backpack1.addTouristWhoCarry(tourist3); // неперевизначений метод equals
-
-        // add items to backpack1
         try {
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack1.add(Drinks.Type.valueOf("WATER"), 1, 0, 1);
-
         } catch(Exception e){
             System.out.println(e);
         }
 
-        // add items to backpack2
         try {
             backpack2.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack2.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack2.add(Drinks.Type.valueOf("CAPPUCCINO"), 1, 1000, 1);
             backpack2.add(Dishes.Type.valueOf("PLATE"),2);
-
         } catch(Exception e){
             System.out.println(e);
         }
 
-        // add items to backpack3
         try {
             backpack3.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack3.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack3.add(Drinks.Type.valueOf("CAPPUCCINO"), 1, 1000, 1);
             backpack3.add(Dishes.Type.valueOf("PLATE"),2);
-
+//            backpack3.add(Drinks.Type.valueOf("WATER"), 1, 1000, 1);
         } catch(Exception e){
             System.out.println(e);
         }
@@ -64,5 +58,7 @@ public class Main {
         System.out.println("Equals of backpacks: " + backpack2.equalsByContent(backpack3));
     }
 }
+
+
 
 
