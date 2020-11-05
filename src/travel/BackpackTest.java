@@ -4,8 +4,6 @@ import food.Drinks;
 import food.DryRation;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +16,7 @@ class BackpackTest {
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
 
         //WHEN
-        backpack1.addTouristWhoCarry(tourist1); // неперевизначений метод equals
+        backpack1.addTouristWhoCarry(tourist1);
 
         //THEN
         Tourist actual = backpack1.whoCarry.get(0);
@@ -74,8 +72,8 @@ class BackpackTest {
         } catch(Exception e){
             System.out.println(e);
         }
-        //WHEN
 
+        //WHEN
         String actual = backpack4.toString();
 
         //THEN
@@ -179,8 +177,6 @@ class BackpackTest {
         }
 
         //WHEN
-
-
         backpack1.sumItem(backpack2);
 
         //THEN
@@ -197,8 +193,6 @@ class BackpackTest {
         } catch(Exception e){
             System.out.println(e);
         }
-
-
 
         assertTrue(backpack1.equalsByContent(backpack3));
     }

@@ -18,7 +18,8 @@ class ExceptionLimitOversizeTest {
             backpack1.add(Dishes.Type.valueOf("PLATE"),5);
         });
 
-        String expectedMessage = "Oversize of limit. Max of weight = 25.0, current weight = 21.0, reminder of weight = 4.0";
+        String expectedMessage = "Oversize of limit. Max of weight = 25.0, current weight = 21.0, " +
+                "reminder of weight = 4.0";
         String actualMessage = exception.getMessage();
 
         assertEquals(actualMessage, expectedMessage);

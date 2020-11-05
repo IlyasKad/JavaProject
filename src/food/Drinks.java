@@ -25,10 +25,6 @@ public class Drinks extends Food {
         return "Drink: " + name + "," + weight + "," + calories + "," + volume + ".";
     }
 
-//    public String toStringForFile() {
-//        return getClass().getName() + ";" + name + ";" + weight + ";" + calories + ";" + volume + "\n";
-//    }
-
     @Override
     public boolean equals(Object object) {
         if (object == this) {

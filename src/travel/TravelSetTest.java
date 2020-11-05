@@ -1,11 +1,8 @@
 package travel;
 
 import food.Drinks;
-import food.DryRation;
-import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 

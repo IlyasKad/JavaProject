@@ -1,7 +1,5 @@
 package travel;
 
-import food.DryRation;
-
 public class Dishes extends Item {
     public enum Type implements ItemType{
         PLATE, FORK

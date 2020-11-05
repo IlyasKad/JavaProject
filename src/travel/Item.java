@@ -8,10 +8,5 @@ public abstract class Item {
         this.weight = weight;
     }
 
-//    public void sumItem(Item item){
-//        this.weight += item.weight;
-//    }
-
     public abstract void sumItem(Item item);
-
 }
