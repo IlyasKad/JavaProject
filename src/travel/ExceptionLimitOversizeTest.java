@@ -7,21 +7,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ExceptionLimitOversizeTest {
     @Test
-    public void whenExceptionThrown_thenAssertionSucceeds() {
-
+    public void whenExceptionLimitOversize() {
+        //GIVEN
         ExceptionLimitOversize exception = assertThrows(ExceptionLimitOversize.class, () -> {
             Backpack backpack1 = new Backpack("backpack1", 10, 25);
 
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack1.add(Drinks.Type.valueOf("WATER"), 1, 0, 1);
-            backpack1.add(Dishes.Type.valueOf("PLATE"),5);
-        });
+            backpack1.add(Dishes.Type.valueOf("PLATE"),5); });
 
+        //WHEN
         String expectedMessage = "Oversize of limit. Max of weight = 25.0, current weight = 21.0, " +
                 "reminder of weight = 4.0";
-        String actualMessage = exception.getMessage();
 
+        //THEN
+        String actualMessage = exception.getMessage();
         assertEquals(actualMessage, expectedMessage);
     }
 }

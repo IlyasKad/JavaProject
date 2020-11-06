@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DrinksTest {
 
     @Test
-    void eat() {
+    void whenEatDrinks() {
         //GIVEN
         double weight = 1;
         Drinks milk1 = new Drinks(Drinks.Type.MILK, weight, 100, 1);
@@ -24,7 +24,7 @@ class DrinksTest {
     }
 
     @Test
-    void testToString() {
+    void whenUseToString() {
         //GIVEN
         double weight = 1;
         Drinks milk1 = new Drinks(Drinks.Type.MILK, weight, 100, 1);
@@ -41,7 +41,7 @@ class DrinksTest {
 
 
     @Test
-    void testEquals() {
+    void whenEqualsResultTrue() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
         Drinks milk2 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
@@ -54,7 +54,20 @@ class DrinksTest {
     }
 
     @Test
-    void sumItem() {
+    void whenEqualsWithNull() {
+        //GIVEN
+        Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
+        Drinks milk2 = null;
+
+        //WHEN
+        boolean actual = milk1.equals(milk2);
+
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void whenSumItem() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
 
@@ -67,5 +80,31 @@ class DrinksTest {
         Drinks expected = new Drinks(Drinks.Type.MILK, 2, 200, 1);
 
         assertEquals(milk1, expected);
+    }
+
+    @Test
+    void whenEqualsObjectThis() {
+        //GIVEN
+        Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
+        Drinks milk2 = milk1;
+
+        //WHEN
+        boolean actual = milk1.equals(milk2);
+
+        //THEN
+        assertTrue(actual);
+    }
+
+    @Test
+    void whenEqualsResultFalse() {
+        //GIVEN
+        Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
+        Drinks milk2 = new Drinks(Drinks.Type.WATER, 1, 100, 1);
+
+        //WHEN
+        boolean actual = milk1.equals(milk2);
+
+        //THEN
+        assertFalse(actual);
     }
 }
