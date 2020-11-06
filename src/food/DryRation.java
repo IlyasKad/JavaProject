@@ -45,4 +45,6 @@ public class DryRation extends Food{
         this.weight += dryRation.weight;
         this.calories += dryRation.calories;
     }
+
+
 }

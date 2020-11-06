@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class StateBackpackTest {
 
     @Test
-    void getName() {
+    void whenNeedToGetName() {
         //GIVEN
         StateBackpack stateBackpack = StateBackpack.EMPTY;
 
@@ -22,7 +22,7 @@ class StateBackpackTest {
     }
 
     @Test
-    void testToString() {
+    void whenUseToString() {
         //GIVEN
         StateBackpack stateBackpack = StateBackpack.EMPTY;
 

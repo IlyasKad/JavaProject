@@ -10,12 +10,10 @@ public class Dishes extends Item {
         name = type.toString();
     }
 
-
     @Override
     public String toString() {
         return "Dishes: " + name + "," + weight + ".";
     }
-
 
     @Override
     public boolean equals(Object object) { // override equals

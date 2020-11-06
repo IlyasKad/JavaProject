@@ -1,15 +1,15 @@
 package travel;
 
+import medicines.Pill;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class DishesTest {
 
     @Test
-    void testToString() {
+    void whenUseToString() {
         //GIVEN
         double weight = 1;
         Dishes dishes1 = new Dishes(Dishes.Type.PLATE, weight);
@@ -26,20 +26,20 @@ class DishesTest {
 
 
     @Test
-    void testEquals() {
+    void whenEqualsDishes() {
         //GIVEN
         Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
-        Dishes milk2 = new Dishes(Dishes.Type.PLATE, 1);
+        Dishes dishes2 = new Dishes(Dishes.Type.PLATE, 1);
 
         //WHEN
-        boolean actual = dishes1.equals(milk2);
+        boolean actual = dishes1.equals(dishes2);
 
         //THEN
         assertTrue(actual);
     }
 
     @Test
-    void sumItem() {
+    void whenSumItem() {
         //GIVEN
         Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
 
@@ -52,5 +52,44 @@ class DishesTest {
         Dishes expected = new Dishes(Dishes.Type.PLATE, 2);
 
         assertEquals(dishes1, expected);
+    }
+
+    @Test
+    void whenEqualsWithNull() {
+        //GIVEN
+        Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
+        Dishes dishes2 = null;
+
+        //WHEN
+        boolean actual = dishes1.equals(dishes2);
+
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void whenEqualsResultFalse() {
+        //GIVEN
+        Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
+        Dishes dishes2 = new Dishes(Dishes.Type.PLATE, 2);
+
+        //WHEN
+        boolean actual = dishes1.equals(dishes2);
+
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void whenEqualsWithThis() {
+        //GIVEN
+        Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
+        Dishes dishes2 = dishes1;
+
+        //WHEN
+        boolean actual = dishes1.equals(dishes2);
+
+        //THEN
+        assertTrue(actual);
     }
 }

@@ -2,14 +2,13 @@ package food;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class DryRationTest {
 
     @Test
-    void eat() {
+    void whenEatDryRation() {
         //GIVEN
         double weight = 1;
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, weight, 100);
@@ -25,7 +24,7 @@ class DryRationTest {
     }
 
     @Test
-    void testToString() {
+    void whenUseToString() {
         //GIVEN
         double weight = 1;
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, weight, 100);
@@ -42,20 +41,20 @@ class DryRationTest {
 
 
     @Test
-    void testEquals() {
+    void whenEqualsResultTrue() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
-        DryRation milk2 = new DryRation(DryRation.Type.BREAD, 1, 100);
+        DryRation bread2 = new DryRation(DryRation.Type.BREAD, 1, 100);
 
         //WHEN
-        boolean actual = bread1.equals(milk2);
+        boolean actual = bread1.equals(bread2);
 
         //THEN
         assertTrue(actual);
     }
 
     @Test
-    void sumItem() {
+    void whenSumItem() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
 
@@ -68,6 +67,45 @@ class DryRationTest {
         DryRation expected = new DryRation(DryRation.Type.BREAD, 2, 200);
 
         assertEquals(bread1, expected);
+    }
+
+    @Test
+    void whenEqualsWithNull() {
+        //GIVEN
+        DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
+        DryRation bread2 = null;
+
+        //WHEN
+        boolean actual = bread1.equals(bread2);
+
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void whenEqualsWithThis() {
+        //GIVEN
+        DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
+        DryRation bread2 = bread1;
+
+        //WHEN
+        boolean actual = bread1.equals(bread2);
+
+        //THEN
+        assertTrue(actual);
+    }
+
+    @Test
+    void whenEqualsResultFalse() {
+        //GIVEN
+        DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
+        DryRation bread2 = new DryRation(DryRation.Type.ORANGE, 1, 100);
+
+        //WHEN
+        boolean actual = bread1.equals(bread2);
+
+        //THEN
+        assertFalse(actual);
     }
     
 }
