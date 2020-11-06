@@ -1,6 +1,7 @@
 package medicines;
 
 
+import food.DryRation;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PillTest {
 
     @Test
-    void eat() {
+    void whenEatPill() {
         //GIVEN
         double weight = 1;
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, weight);
@@ -24,7 +25,7 @@ class PillTest {
     }
 
     @Test
-    void testToString() {
+    void whenUseToString() {
         //GIVEN
         double weight = 1;
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, weight);
@@ -41,7 +42,7 @@ class PillTest {
 
 
     @Test
-    void testEquals() {
+    void whenEqualsResultTrue() {
         //GIVEN
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
         Pill pill2 = new Pill(Pill.Type.LOPERAMIDE, 1);
@@ -54,7 +55,7 @@ class PillTest {
     }
 
     @Test
-    void sumItem() {
+    void whenSumItem() {
         //GIVEN
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
 
@@ -67,5 +68,44 @@ class PillTest {
         Pill expected = new Pill(Pill.Type.LOPERAMIDE, 2);
 
         assertEquals(pill1, expected);
+    }
+
+    @Test
+    void whenEqualsWithNull() {
+        //GIVEN
+        Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
+        Pill pill2 = null;
+
+        //WHEN
+        boolean actual = pill1.equals(pill2);
+
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void whenEqualsWithThis() {
+        //GIVEN
+        Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
+        Pill pill2 = pill1;
+
+        //WHEN
+        boolean actual = pill1.equals(pill2);
+
+        //THEN
+        assertTrue(actual);
+    }
+
+    @Test
+    void whenEqualsResultFalse() {
+        //GIVEN
+        Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
+        Pill pill2 = new Pill(Pill.Type.ASPIRIN, 1);
+
+        //WHEN
+        boolean actual = pill1.equals(pill2);
+
+        //THEN
+        assertFalse(actual);
     }
 }

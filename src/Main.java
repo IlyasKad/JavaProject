@@ -5,7 +5,6 @@ import travel.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class Main {
     public static void main(String[] args) {
         Tourist tourist1 = new Tourist("Nick");
@@ -33,7 +32,7 @@ public class Main {
             backpack2.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack2.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack2.add(Drinks.Type.valueOf("CAPPUCCINO"), 1, 1000, 1);
-            backpack2.add(Dishes.Type.valueOf("PLATE"),2);
+            backpack2.add(Dishes.Type.valueOf("PLATE"),3);
         } catch(Exception e){
             System.out.println(e);
         }
@@ -56,6 +55,18 @@ public class Main {
         System.out.println();
 
         System.out.println("Equals of backpacks: " + backpack2.equalsByContent(backpack3));
+
+
+
+
+
+
+
+//        System.out.println("List with iterator: ");
+//        Iterator<Item> it = backpack1.getIterator();
+//        while (it.hasNext()) {
+//            System.out.println(it.next());
+//        }
     }
 }
 

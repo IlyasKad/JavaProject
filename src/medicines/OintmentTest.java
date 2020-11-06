@@ -1,5 +1,6 @@
 package medicines;
 
+import food.DryRation;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OintmentTest {
 
     @Test
-    void testToString() {
+    void whenUseToString() {
         //GIVEN
         double weight = 1;
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, weight);
@@ -24,7 +25,7 @@ class OintmentTest {
 
 
     @Test
-    void testEquals() {
+    void whenEqualsResultTrue() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
         Ointment ointment2 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
@@ -37,7 +38,7 @@ class OintmentTest {
     }
 
     @Test
-    void sumItem() {
+    void whenSumItem() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
 
@@ -50,5 +51,44 @@ class OintmentTest {
         Ointment expected = new Ointment(Ointment.Type.LEVOMEKOL, 2);
 
         assertEquals(ointment1, expected);
+    }
+
+    @Test
+    void whenEqualsWithNull() {
+        //GIVEN
+        Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
+        Ointment ointment2 = null;
+
+        //WHEN
+        boolean actual = ointment1.equals(ointment2);
+
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void whenEqualsWithThis() {
+        //GIVEN
+        Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
+        Ointment ointment2 = ointment1;
+
+        //WHEN
+        boolean actual = ointment1.equals(ointment2);
+
+        //THEN
+        assertTrue(actual);
+    }
+
+    @Test
+    void whenEqualsResultFalse() {
+        //GIVEN
+        Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
+        Ointment ointment2 = new Ointment(Ointment.Type.KETONAL, 1);
+
+        //WHEN
+        boolean actual = ointment1.equals(ointment2);
+
+        //THEN
+        assertFalse(actual);
     }
 }

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TravelSetTest {
 
     @Test
-    void addItem() {
+    void whenAddItem() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         TravelSet travelSet1 = new TravelSet();
@@ -23,7 +23,7 @@ class TravelSetTest {
     }
 
     @Test
-    void deleteItem() {
+    void whenDeleteItem() {
         //GIVEN
         Backpack backpack = new Backpack("backpack", 1, 25);
         TravelSet travelSet1 = new TravelSet();
@@ -37,11 +37,27 @@ class TravelSetTest {
     }
 
     @Test
-    void testToString() {
+    void whenDeleteItemResultFalse() {
+        //GIVEN
+        Backpack backpack = new Backpack("backpack", 1, 25);
+        Backpack backpack2 = new Backpack("backpack", 1, 25);
+        TravelSet travelSet1 = new TravelSet();
+        travelSet1.addItem(backpack);
+
+        //WHEN
+        boolean actual = travelSet1.deleteItem(backpack2);
+
+        //THEN
+        assertFalse(actual);
+    }
+
+    @Test
+    void whenUseToString() {
         //GIVEN
         TravelSet travelSet = new TravelSet();
         Backpack backpack4 = new Backpack("backpack4", 10, 25);
         backpack4.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+        backpack4.add(Drinks.Type.valueOf("WATER"), 5, 1000, 1);
         travelSet.addItem(backpack4);
 
         //WHEN
@@ -50,8 +66,23 @@ class TravelSetTest {
         //THEN
         String expected = "List of travel set items: \n" +
                 "List of backpack4 items: \n" +
-                "\tDrink: MILK,5.0,1000.0,1.0.\n";
+                "\tDrink: MILK,5.0,1000.0,1.0.\n" +
+                "\tDrink: WATER,5.0,1000.0,1.0.\n";
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void whenAddItemResultFalse() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+        TravelSet travelSet1 = new TravelSet();
+
+        //WHEN
+        travelSet1.addItem(backpack1);
+
+        //THEN
+        boolean actual = travelSet1.addItem(backpack1);;
+        assertFalse(actual);
     }
 }
