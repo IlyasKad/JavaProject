@@ -57,16 +57,6 @@ public class Main {
         System.out.println("Equals of backpacks: " + backpack2.equalsByContent(backpack3));
 
 
-
-
-
-
-
-//        System.out.println("List with iterator: ");
-//        Iterator<Item> it = backpack1.getIterator();
-//        while (it.hasNext()) {
-//            System.out.println(it.next());
-//        }
     }
 }
 

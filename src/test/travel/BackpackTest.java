@@ -2,7 +2,6 @@ package travel;
 
 import food.Drinks;
 import food.DryRation;
-import medicines.Pill;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
