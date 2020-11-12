@@ -7,27 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class StateBackpackTest {
 
     @Test
-    void whenNeedToGetName() {
+    void whenUseToStringThenMessageFormat() {
         //GIVEN
         StateBackpack stateBackpack = StateBackpack.EMPTY;
 
         //WHEN
-
-        String actual = stateBackpack.getName();
-
-        //THEN
-        String expected = "empty";
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void whenUseToString() {
-        //GIVEN
-        StateBackpack stateBackpack = StateBackpack.EMPTY;
-
-        //WHEN
-
         String actual = stateBackpack.toString();
 
         //THEN
@@ -36,4 +20,17 @@ class StateBackpackTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void whenGetNameThenNamesEquals() {
+        //GIVEN
+        StateBackpack stateBackpack = StateBackpack.EMPTY;
+
+        //WHEN
+        String actual = stateBackpack.getName();
+
+        //THEN
+        String expected = "empty";
+
+        assertEquals(expected, actual);
+    }
 }

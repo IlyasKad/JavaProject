@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DrinksTest {
 
     @Test
-    void whenEatDrinks() {
+    void whenEatDrinksThenWeightDecrease() {
         //GIVEN
         double weight = 1;
         Drinks milk1 = new Drinks(Drinks.Type.MILK, weight, 100, 1);
@@ -24,7 +24,7 @@ class DrinksTest {
     }
 
     @Test
-    void whenUseToString() {
+    void whenUseToStringThenMessageFormat() {
         //GIVEN
         double weight = 1;
         Drinks milk1 = new Drinks(Drinks.Type.MILK, weight, 100, 1);
@@ -41,7 +41,7 @@ class DrinksTest {
 
 
     @Test
-    void whenEqualsResultTrue() {
+    void whenObjectsContentSameThenEqualsTrue() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
         Drinks milk2 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
@@ -54,7 +54,7 @@ class DrinksTest {
     }
 
     @Test
-    void whenEqualsWithNull() {
+    void whenObjectNullThenEqualsFalse() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
         Drinks milk2 = null;
@@ -67,7 +67,7 @@ class DrinksTest {
     }
 
     @Test
-    void whenSumItem() {
+    void whenSumItemsThenWeightCaloriesIncrease() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
 
@@ -83,7 +83,7 @@ class DrinksTest {
     }
 
     @Test
-    void whenEqualsObjectThis() {
+    void whenObjectThisThenEqualsTrue() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
         Drinks milk2 = milk1;
@@ -96,7 +96,7 @@ class DrinksTest {
     }
 
     @Test
-    void whenEqualsResultFalse() {
+    void whenObjectsContentVariousThenEqualsFalse() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
         Drinks milk2 = new Drinks(Drinks.Type.WATER, 1, 100, 1);

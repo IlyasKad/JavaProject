@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TravelSetTest {
 
     @Test
-    void whenAddItem() {
+    void whenAddItemToSetThenItemExistInSet() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         TravelSet travelSet1 = new TravelSet();
@@ -24,7 +24,7 @@ class TravelSetTest {
     }
 
     @Test
-    void whenDeleteItem() {
+    void whenDeleteItemFromSetThenItemNotExistInSet() {
         //GIVEN
         Backpack backpack = new Backpack("backpack", 1, 25);
         TravelSet travelSet1 = new TravelSet();
@@ -38,7 +38,7 @@ class TravelSetTest {
     }
 
     @Test
-    void whenDeleteItemResultFalse() {
+    void whenDeleteItemThatNotExistInSetThenResultFalse() {
         //GIVEN
         Backpack backpack = new Backpack("backpack", 1, 25);
         Backpack backpack2 = new Backpack("backpack", 1, 25);
@@ -53,7 +53,7 @@ class TravelSetTest {
     }
 
     @Test
-    void whenUseToString() {
+    void whenUseToStringThenMessageFormat() {
         //GIVEN
         TravelSet travelSet = new TravelSet();
         Backpack backpack4 = new Backpack("backpack4", 10, 25);
@@ -74,7 +74,7 @@ class TravelSetTest {
     }
 
     @Test
-    void whenAddItemResultFalse() {
+    void whenAddItemToSetNotValidThenAdditionFalse() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         TravelSet travelSet1 = new TravelSet();
