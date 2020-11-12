@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OintmentTest {
 
     @Test
-    void whenUseToString() {
+    void whenUseToStringThenMessageFormat() {
         //GIVEN
         double weight = 1;
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, weight);
@@ -25,7 +25,7 @@ class OintmentTest {
 
 
     @Test
-    void whenEqualsResultTrue() {
+    void whenObjectsContentSameThenEqualsTrue() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
         Ointment ointment2 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
@@ -38,7 +38,7 @@ class OintmentTest {
     }
 
     @Test
-    void whenSumItem() {
+    void whenSumItemsThenWeightIncrease() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
 
@@ -54,7 +54,7 @@ class OintmentTest {
     }
 
     @Test
-    void whenEqualsWithNull() {
+    void whenObjectNullThenEqualsFalse() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
         Ointment ointment2 = null;
@@ -67,7 +67,7 @@ class OintmentTest {
     }
 
     @Test
-    void whenEqualsWithThis() {
+    void whenObjectThisThenEqualsTrue() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
         Ointment ointment2 = ointment1;
@@ -80,7 +80,7 @@ class OintmentTest {
     }
 
     @Test
-    void whenEqualsResultFalse() {
+    void whenObjectsContentVariousThenEqualsFalse() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
         Ointment ointment2 = new Ointment(Ointment.Type.KETONAL, 1);
