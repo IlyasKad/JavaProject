@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BackpackTest {
     @Test
-    void whenAddTouristWhoCarry() {
+    void whenAddTouristWhoCarryItemThenTouristCarryThis() {
         //GIVEN
         Tourist tourist1 = new Tourist("Nick");
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
@@ -24,26 +24,9 @@ class BackpackTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    void whenAddItem() {
-        //GIVEN
-        Backpack backpack = new Backpack("backpack", 1, 25);
-
-        //WHEN
-        try {
-            backpack.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
-        } catch (ExceptionLimitOversize e) { e.printStackTrace(); }
-
-        //THEN
-        Iterator<Item> iterator = backpack.getIterator();
-        Item actual = iterator.next();
-        Item expected = new Drinks(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
-        assertEquals(expected, actual);
-    }
-
 
     @Test
-    void whenDeleteItem() {
+    void whenDeleteItemFromBackpackThenItemNotExist() {
         //GIVEN
         Backpack backpack = new Backpack("backpack", 1, 25);
         try {
@@ -59,7 +42,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenUseToString() {
+    void whenUseToStringThenMessageFormat() {
         //GIVEN
         Backpack backpack4 = new Backpack("backpack4", 10, 25);
         try {
@@ -78,7 +61,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenEqualsByContent() {
+    void whenObjectsContentSameThenEqualsTrue() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 30);
         Backpack backpack3 = new Backpack("backpack3", 10, 30);
@@ -108,7 +91,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenEqualsByContentResultFalse() {
+    void whenObjectsContentVariousThenEqualsFalse() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 30);
         Backpack backpack3 = new Backpack("backpack3", 10, 30);
@@ -138,7 +121,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenSumItem() {
+    void whenSumItemsThenWeightContentBackpackIncrease() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 100);
         Backpack backpack2 = new Backpack("backpack2", 10, 100);
@@ -178,7 +161,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenEqualsByContentWithNull() {
+    void whenObjectNullThenEqualsFalse() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         Backpack backpack3 = null;
@@ -200,7 +183,7 @@ class BackpackTest {
 
 
     @Test
-    void whenEqualsWithThis() {
+    void whenObjectThisThenEqualsTrue() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         Backpack backpack3 = backpack1;
@@ -220,7 +203,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenEqualsByContentWithSize() {
+    void whenSizeObjectsNotEqualsThenEqualsFalse() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 30);
         Backpack backpack3 = new Backpack("backpack3", 10, 30);
@@ -251,7 +234,7 @@ class BackpackTest {
     }
 
     @Test
-    void wheUseToStringWithEmptyList() {
+    void wheUseToStringWithEmptyListThenMsgFormat() {
         //GIVEN
         Backpack backpack4 = new Backpack("backpack4", 10, 25);
 
@@ -264,4 +247,20 @@ class BackpackTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void whenAddItemToBackpackThenItemExistInBackpack() {
+        //GIVEN
+        Backpack backpack = new Backpack("backpack", 1, 25);
+
+        //WHEN
+        try {
+            backpack.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+        } catch (ExceptionLimitOversize e) { e.printStackTrace(); }
+
+        //THEN
+        Iterator<Item> iterator = backpack.getIterator();
+        Item actual = iterator.next();
+        Item expected = new Drinks(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+        assertEquals(expected, actual);
+    }
 }

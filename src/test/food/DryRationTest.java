@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DryRationTest {
 
     @Test
-    void whenEatDryRation() {
+    void whenEatDryRationThenWeightDecrease() {
         //GIVEN
         double weight = 1;
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, weight, 100);
@@ -24,7 +24,7 @@ class DryRationTest {
     }
 
     @Test
-    void whenUseToString() {
+    void whenUseToStringThenMessageFormat() {
         //GIVEN
         double weight = 1;
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, weight, 100);
@@ -41,7 +41,7 @@ class DryRationTest {
 
 
     @Test
-    void whenEqualsResultTrue() {
+    void whenObjectsContentSameThenEqualsTrue() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
         DryRation bread2 = new DryRation(DryRation.Type.BREAD, 1, 100);
@@ -54,7 +54,7 @@ class DryRationTest {
     }
 
     @Test
-    void whenSumItem() {
+    void whenSumItemsThenWeightCaloriesIncrease() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
 
@@ -70,7 +70,7 @@ class DryRationTest {
     }
 
     @Test
-    void whenEqualsWithNull() {
+    void whenObjectNullThenEqualsFalse() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
         DryRation bread2 = null;
@@ -83,7 +83,7 @@ class DryRationTest {
     }
 
     @Test
-    void whenEqualsWithThis() {
+    void whenObjectThisThenEqualsTrue() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
         DryRation bread2 = bread1;
@@ -96,7 +96,7 @@ class DryRationTest {
     }
 
     @Test
-    void whenEqualsResultFalse() {
+    void whenObjectsContentVariousThenEqualsFalse() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
         DryRation bread2 = new DryRation(DryRation.Type.ORANGE, 1, 100);
