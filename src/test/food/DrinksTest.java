@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DrinksTest {
 
     @Test
-    void whenEatDrinksThenWeightDecrease() {
+    void When_EatDrinks_WeightDecrease() {
         //GIVEN
         double weight = 1;
         Drinks milk1 = new Drinks(Drinks.Type.MILK, weight, 100, 1);
@@ -23,25 +23,11 @@ class DrinksTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    void whenUseToStringThenMessageFormat() {
-        //GIVEN
-        double weight = 1;
-        Drinks milk1 = new Drinks(Drinks.Type.MILK, weight, 100, 1);
 
-        //WHEN
-
-        String actual = milk1.toString();
-
-        //THEN
-        String expected = "Drink: MILK,1.0,100.0,1.0.";
-
-        assertEquals(expected, actual);
-    }
 
 
     @Test
-    void whenObjectsContentSameThenEqualsTrue() {
+    void When_ObjectsContentSame_EqualsTrue() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
         Drinks milk2 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
@@ -54,7 +40,7 @@ class DrinksTest {
     }
 
     @Test
-    void whenObjectNullThenEqualsFalse() {
+    void When_ObjectNull_EqualsFalse() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
         Drinks milk2 = null;
@@ -67,7 +53,7 @@ class DrinksTest {
     }
 
     @Test
-    void whenSumItemsThenWeightCaloriesIncrease() {
+    void When_SumItems_WeightAndCaloriesIncrease() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
 
@@ -83,7 +69,7 @@ class DrinksTest {
     }
 
     @Test
-    void whenObjectThisThenEqualsTrue() {
+    void When_ObjectThis_EqualsTrue() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
         Drinks milk2 = milk1;
@@ -96,7 +82,7 @@ class DrinksTest {
     }
 
     @Test
-    void whenObjectsContentVariousThenEqualsFalse() {
+    void When_ObjectsContentVarious_EqualsFalse() {
         //GIVEN
         Drinks milk1 = new Drinks(Drinks.Type.MILK, 1, 100, 1);
         Drinks milk2 = new Drinks(Drinks.Type.WATER, 1, 100, 1);
@@ -106,5 +92,21 @@ class DrinksTest {
 
         //THEN
         assertFalse(actual);
+    }
+
+    @Test
+    void When_UseToString_MessageFormat() {
+        //GIVEN
+        double weight = 1;
+        Drinks milk1 = new Drinks(Drinks.Type.MILK, weight, 100, 1);
+
+        //WHEN
+
+        String actual = milk1.toString();
+
+        //THEN
+        String expected = "Drink: MILK,1.0,100.0,1.0.";
+
+        assertEquals(expected, actual);
     }
 }

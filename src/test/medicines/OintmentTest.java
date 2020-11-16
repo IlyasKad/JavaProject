@@ -8,24 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OintmentTest {
 
     @Test
-    void whenUseToStringThenMessageFormat() {
-        //GIVEN
-        double weight = 1;
-        Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, weight);
-
-        //WHEN
-
-        String actual = ointment1.toString();
-
-        //THEN
-        String expected = "Ointment: LEVOMEKOL,1.0.";
-
-        assertEquals(expected, actual);
-    }
-
-
-    @Test
-    void whenObjectsContentSameThenEqualsTrue() {
+    void When_ObjectsContentSame_EqualsTrue() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
         Ointment ointment2 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
@@ -38,7 +21,7 @@ class OintmentTest {
     }
 
     @Test
-    void whenSumItemsThenWeightIncrease() {
+    void When_SumItems_WeightIncrease() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
 
@@ -54,7 +37,7 @@ class OintmentTest {
     }
 
     @Test
-    void whenObjectNullThenEqualsFalse() {
+    void When_ObjectNull_EqualsFalse() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
         Ointment ointment2 = null;
@@ -67,7 +50,7 @@ class OintmentTest {
     }
 
     @Test
-    void whenObjectThisThenEqualsTrue() {
+    void When_ObjectThis_EqualsTrue() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
         Ointment ointment2 = ointment1;
@@ -80,7 +63,7 @@ class OintmentTest {
     }
 
     @Test
-    void whenObjectsContentVariousThenEqualsFalse() {
+    void When_ObjectsContentVarious_EqualsFalse() {
         //GIVEN
         Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, 1);
         Ointment ointment2 = new Ointment(Ointment.Type.KETONAL, 1);
@@ -91,4 +74,21 @@ class OintmentTest {
         //THEN
         assertFalse(actual);
     }
+
+    @Test
+    void When_UseToString_MessageFormat() {
+        //GIVEN
+        double weight = 1;
+        Ointment ointment1 = new Ointment(Ointment.Type.LEVOMEKOL, weight);
+
+        //WHEN
+
+        String actual = ointment1.toString();
+
+        //THEN
+        String expected = "Ointment: LEVOMEKOL,1.0.";
+
+        assertEquals(expected, actual);
+    }
+
 }

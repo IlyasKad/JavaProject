@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DishesTest {
 
     @Test
-    void whenSumItemsThenWeightIncrease() {
+    void When_SumItems_WeightIncrease() {
         //GIVEN
         Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
 
@@ -24,7 +24,7 @@ class DishesTest {
     }
 
     @Test
-    void whenObjectNullThenEqualsFalse() {
+    void When_ObjectNull_EqualsFalse() {
         //GIVEN
         Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
         Dishes dishes2 = null;
@@ -37,7 +37,7 @@ class DishesTest {
     }
 
     @Test
-    void whenObjectsContentVariousThenEqualsFalse() {
+    void When_ObjectsContentVarious_EqualsFalse() {
         //GIVEN
         Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
         Dishes dishes2 = new Dishes(Dishes.Type.PLATE, 2);
@@ -50,7 +50,7 @@ class DishesTest {
     }
 
     @Test
-    void whenObjectThisThenEqualsTrue() {
+    void When_ObjectThis_EqualsTrue() {
         //GIVEN
         Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
         Dishes dishes2 = dishes1;
@@ -63,7 +63,7 @@ class DishesTest {
     }
 
     @Test
-    void whenUseToStringThenMessageFormat() {
+    void When_UseToString_MessageFormat() {
         //GIVEN
         double weight = 1;
         Dishes dishes1 = new Dishes(Dishes.Type.PLATE, weight);
@@ -79,7 +79,7 @@ class DishesTest {
     }
 
     @Test
-    void whenObjectsContentSameThenEqualsTrue() {
+    void When_ObjectsContentSame_EqualsTrue() {
         //GIVEN
         Dishes dishes1 = new Dishes(Dishes.Type.PLATE, 1);
         Dishes dishes2 = new Dishes(Dishes.Type.PLATE, 1);

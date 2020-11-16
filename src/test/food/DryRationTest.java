@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DryRationTest {
 
     @Test
-    void whenEatDryRationThenWeightDecrease() {
+    void When_EatDryRation_WeightDecrease() {
         //GIVEN
         double weight = 1;
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, weight, 100);
@@ -23,25 +23,11 @@ class DryRationTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    void whenUseToStringThenMessageFormat() {
-        //GIVEN
-        double weight = 1;
-        DryRation bread1 = new DryRation(DryRation.Type.BREAD, weight, 100);
 
-        //WHEN
-
-        String actual = bread1.toString();
-
-        //THEN
-        String expected = "Dry ration: BREAD,1.0,100.0.";
-
-        assertEquals(expected, actual);
-    }
 
 
     @Test
-    void whenObjectsContentSameThenEqualsTrue() {
+    void When_ObjectsContentSame_EqualsTrue() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
         DryRation bread2 = new DryRation(DryRation.Type.BREAD, 1, 100);
@@ -54,7 +40,7 @@ class DryRationTest {
     }
 
     @Test
-    void whenSumItemsThenWeightCaloriesIncrease() {
+    void When_SumItems_WeightAndCaloriesIncrease() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
 
@@ -70,7 +56,7 @@ class DryRationTest {
     }
 
     @Test
-    void whenObjectNullThenEqualsFalse() {
+    void When_ObjectNull_EqualsFalse() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
         DryRation bread2 = null;
@@ -83,7 +69,7 @@ class DryRationTest {
     }
 
     @Test
-    void whenObjectThisThenEqualsTrue() {
+    void When_ObjectThis_EqualsTrue() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
         DryRation bread2 = bread1;
@@ -96,7 +82,7 @@ class DryRationTest {
     }
 
     @Test
-    void whenObjectsContentVariousThenEqualsFalse() {
+    void When_ObjectsContentVarious_EqualsFalse() {
         //GIVEN
         DryRation bread1 = new DryRation(DryRation.Type.BREAD, 1, 100);
         DryRation bread2 = new DryRation(DryRation.Type.ORANGE, 1, 100);
@@ -107,5 +93,20 @@ class DryRationTest {
         //THEN
         assertFalse(actual);
     }
-    
+
+    @Test
+    void When_UseToString_MessageFormat() {
+        //GIVEN
+        double weight = 1;
+        DryRation bread1 = new DryRation(DryRation.Type.BREAD, weight, 100);
+
+        //WHEN
+
+        String actual = bread1.toString();
+
+        //THEN
+        String expected = "Dry ration: BREAD,1.0,100.0.";
+
+        assertEquals(expected, actual);
+    }
 }

@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TravelSetTest {
 
     @Test
-    void whenAddItemToSetThenItemExistInSet() {
+    void When_AddItemToSet_ItemExistInSet() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         TravelSet travelSet1 = new TravelSet();
@@ -24,7 +24,7 @@ class TravelSetTest {
     }
 
     @Test
-    void whenDeleteItemFromSetThenItemNotExistInSet() {
+    void When_DeleteItemFromSet_ItemNotExistInSet() {
         //GIVEN
         Backpack backpack = new Backpack("backpack", 1, 25);
         TravelSet travelSet1 = new TravelSet();
@@ -38,7 +38,7 @@ class TravelSetTest {
     }
 
     @Test
-    void whenDeleteItemThatNotExistInSetThenResultFalse() {
+    void When_DeleteItemThatNotExistInSet_ResultFalse() {
         //GIVEN
         Backpack backpack = new Backpack("backpack", 1, 25);
         Backpack backpack2 = new Backpack("backpack", 1, 25);
@@ -53,7 +53,7 @@ class TravelSetTest {
     }
 
     @Test
-    void whenUseToStringThenMessageFormat() {
+    void When_UseToString_MessageFormat() {
         //GIVEN
         TravelSet travelSet = new TravelSet();
         Backpack backpack4 = new Backpack("backpack4", 10, 25);
@@ -74,7 +74,7 @@ class TravelSetTest {
     }
 
     @Test
-    void whenAddItemToSetNotValidThenAdditionFalse() {
+    void When_AddItemToSetNotValid_AdditionFalse() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         TravelSet travelSet1 = new TravelSet();
