@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BackpackTest {
     @Test
-    void whenAddTouristWhoCarryItemThenTouristCarryThis() {
+    void When_AddTouristWhoCarryItem_TouristCarryThis() {
         //GIVEN
         Tourist tourist1 = new Tourist("Nick");
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
@@ -26,7 +26,7 @@ class BackpackTest {
 
 
     @Test
-    void whenDeleteItemFromBackpackThenItemNotExist() {
+    void When_DeleteItemFromBackpack_ItemNotExist() {
         //GIVEN
         Backpack backpack = new Backpack("backpack", 1, 25);
         try {
@@ -42,7 +42,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenUseToStringThenMessageFormat() {
+    void When_UseToString_MessageFormat() {
         //GIVEN
         Backpack backpack4 = new Backpack("backpack4", 10, 25);
         try {
@@ -61,7 +61,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenObjectsContentSameThenEqualsTrue() {
+    void When_ObjectsContentSame_EqualsTrue() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 30);
         Backpack backpack3 = new Backpack("backpack3", 10, 30);
@@ -91,7 +91,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenObjectsContentVariousThenEqualsFalse() {
+    void When_ObjectsContentVarious_EqualsFalse() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 30);
         Backpack backpack3 = new Backpack("backpack3", 10, 30);
@@ -121,7 +121,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenSumItemsThenWeightContentBackpackIncrease() {
+    void When_SumItems_WeightContentBackpackIncrease() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 100);
         Backpack backpack2 = new Backpack("backpack2", 10, 100);
@@ -161,7 +161,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenObjectNullThenEqualsFalse() {
+    void When_ObjectNull_EqualsFalse() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         Backpack backpack3 = null;
@@ -183,7 +183,7 @@ class BackpackTest {
 
 
     @Test
-    void whenObjectThisThenEqualsTrue() {
+    void When_ObjectThis_EqualsTrue() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
         Backpack backpack3 = backpack1;
@@ -203,7 +203,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenSizeObjectsNotEqualsThenEqualsFalse() {
+    void When_SizeObjectsNotEquals_EqualsFalse() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 30);
         Backpack backpack3 = new Backpack("backpack3", 10, 30);
@@ -234,7 +234,7 @@ class BackpackTest {
     }
 
     @Test
-    void wheUseToStringWithEmptyListThenMsgFormat() {
+    void When_UseToStringWithEmptyList_MessageFormat() {
         //GIVEN
         Backpack backpack4 = new Backpack("backpack4", 10, 25);
 
@@ -248,7 +248,7 @@ class BackpackTest {
     }
 
     @Test
-    void whenAddItemToBackpackThenItemExistInBackpack() {
+    void When_AddItemToBackpack_ItemExistInBackpack() {
         //GIVEN
         Backpack backpack = new Backpack("backpack", 1, 25);
 

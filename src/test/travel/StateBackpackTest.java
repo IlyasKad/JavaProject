@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class StateBackpackTest {
 
     @Test
-    void whenUseToStringThenMessageFormat() {
+    void When_UseToString_MessageFormat() {
         //GIVEN
         StateBackpack stateBackpack = StateBackpack.EMPTY;
 
@@ -21,7 +21,7 @@ class StateBackpackTest {
     }
 
     @Test
-    void whenGetNameThenNamesEquals() {
+    void When_GetName_NamesEquals() {
         //GIVEN
         StateBackpack stateBackpack = StateBackpack.EMPTY;
 
