@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PillTest {
 
     @Test
-    void whenEatPillThenWeightDecrease() {
+    void When_EatPill_WeightDecrease() {
         //GIVEN
         double weight = 1;
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, weight);
@@ -24,7 +24,7 @@ class PillTest {
     }
 
     @Test
-    void whenUseToStringThenMessageFormat() {
+    void When_UseToString_MessageFormat() {
         //GIVEN
         double weight = 1;
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, weight);
@@ -41,7 +41,7 @@ class PillTest {
 
 
     @Test
-    void whenObjectsContentSameThenEqualsTrue() {
+    void When_ObjectsContentSame_EqualsTrue() {
         //GIVEN
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
         Pill pill2 = new Pill(Pill.Type.LOPERAMIDE, 1);
@@ -54,7 +54,7 @@ class PillTest {
     }
 
     @Test
-    void whenSumItemsThenWeightIncrease() {
+    void When_SumItems_WeightIncrease() {
         //GIVEN
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
 
@@ -70,7 +70,7 @@ class PillTest {
     }
 
     @Test
-    void whenObjectNullThenEqualsFalse() {
+    void When_ObjectNull_EqualsFalse() {
         //GIVEN
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
         Pill pill2 = null;
@@ -83,7 +83,7 @@ class PillTest {
     }
 
     @Test
-    void whenObjectThisThenEqualsTrue() {
+    void When_ObjectThis_EqualsTrue() {
         //GIVEN
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
         Pill pill2 = pill1;
@@ -96,7 +96,7 @@ class PillTest {
     }
 
     @Test
-    void whenObjectsContentVariousThenEqualsFalse() {
+    void When_ObjectsContentVarious_EqualsFalse() {
         //GIVEN
         Pill pill1 = new Pill(Pill.Type.LOPERAMIDE, 1);
         Pill pill2 = new Pill(Pill.Type.ASPIRIN, 1);

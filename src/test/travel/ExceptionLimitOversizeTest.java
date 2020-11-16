@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ExceptionLimitOversizeTest {
     @Test
-    public void whenExceptionLimitOversizeThenMsgFormat() {
+    public void When_ExceptionLimitOversize_MessageFormat() {
         //GIVEN
         ExceptionLimitOversize exception = assertThrows(ExceptionLimitOversize.class, () -> {
             Backpack backpack1 = new Backpack("backpack1", 10, 25);
