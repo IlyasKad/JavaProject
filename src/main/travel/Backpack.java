@@ -31,23 +31,6 @@ public class Backpack extends Item{
         }
     }
 
-    // best way for my opinion because parameters may be different types (String, int, double)
-
-//    public void add(Drinks.Type type, double weight, double calories, double volume) throws ExceptionLimitOversize {
-//        Drinks drinks = new Drinks(type, weight, calories, volume);
-//        addItem(drinks);
-//    }
-//
-//    public void add(DryRation.Type name, double weight, double calories) throws ExceptionLimitOversize {
-//        DryRation dryRation = new DryRation(name, weight, calories);
-//        addItem(dryRation);
-//    }
-//
-//    public void add(Dishes.Type name, double weight) throws ExceptionLimitOversize {
-//        Dishes dishes = new Dishes(name, weight);
-//        addItem(dishes);
-//    }
-
     public void add(Typeable type, double ... args) throws ExceptionLimitOversize {
         Item item = null;
         if (type.getClass() == Drinks.Type.class) {
@@ -76,42 +59,6 @@ public class Backpack extends Item{
         }
         changeState();
     }
-
-
-    //previous bad version
-
-//    private void addFood(Food food) throws ExceptionLimitOversize {
-//        if (this.weight + food.weight > maxWeight ) { // 24 кг + 2 кг > 25 кг
-////            throw new ExceptionLimitOversize("Oversize of limit");
-//            throw new ExceptionLimitOversize(weight, maxWeight);
-//        }
-//        Item itemFound = items.stream().filter(item -> item.name.equals(food.name)).findFirst().orElse(null);
-//        if (itemFound != null) {
-//            Food found = (Food)itemFound;
-//            found.weight += food.weight;
-//            found.calories += food.calories;
-//        } else {
-//            items.add(food);
-//        }
-//        changeState();
-//    }
-
-//    public void add(Dishes.Type type, double weight) throws ExceptionLimitOversize {
-//        if (this.weight > maxWeight - weight) {
-////            throw new ExceptionLimitOversize("Oversize");
-//            throw new ExceptionLimitOversize(weight, maxWeight);
-//        }
-//        Dishes dishes = new Dishes(type, weight);
-//        Item found = items.stream().filter(item -> item.name.equals(type.toString())).findFirst().orElse(null);
-//
-//        if (found != null) {
-//            found.weight += weight;
-//        } else {
-//            items.add(dishes);
-//        }
-//        changeState();
-//    }
-
 
     private void changeState() {
         if (items.size() == 0) {
