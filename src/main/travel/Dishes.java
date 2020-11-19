@@ -2,7 +2,7 @@ package travel;
 
 public class Dishes extends Item {
     public enum Type implements Typeable {
-        PLATE, FORK
+        PLATE
     }
 
     public Dishes(Type type, double weight) {
