@@ -26,7 +26,7 @@ public class Backpack extends Item{
     }
 
     public void addTouristWhoCarry(Tourist tourist) {
-        if (!whoCarry.contains(tourist)) {  // method equals
+        if (!whoCarry.contains(tourist)) {
             whoCarry.add(tourist);
         }
     }
@@ -47,7 +47,7 @@ public class Backpack extends Item{
         if (item == null) {
             return;
         }
-        if (this.weight + item.weight > maxWeight ) { // 24 кг + 2 кг > 25 кг
+        if (this.weight + item.weight > maxWeight ) {
             throw new ExceptionLimitOversize(weight, maxWeight);
         }
         weight += item.weight;
@@ -93,7 +93,6 @@ public class Backpack extends Item{
         return builder.toString();
     }
 
-
     public boolean equalsByContent(Object object) {
         if (object == this) {
             return true;
@@ -108,7 +107,7 @@ public class Backpack extends Item{
             return false;
         }
         for (Item i: items) {
-            if (!backpack.items.contains(i)) { // use override equals
+            if (!backpack.items.contains(i)) {
                 return false;
             }
         }
@@ -126,6 +125,4 @@ public class Backpack extends Item{
             addItem(i);
         }
     }
-
-
 }

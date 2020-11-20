@@ -18,7 +18,7 @@ public class Main {
         TravelSet travelSet1 = new TravelSet();
 
         backpack1.whoCarry = new ArrayList<>(Arrays.asList(tourist1, tourist2));
-        backpack1.addTouristWhoCarry(tourist3); // method equals
+        backpack1.addTouristWhoCarry(tourist3);
 
         try {
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
@@ -55,8 +55,6 @@ public class Main {
         System.out.println();
 
         System.out.println("Equals of backpacks: " + backpack2.equalsByContent(backpack3));
-
-
     }
 }
 

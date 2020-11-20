@@ -16,7 +16,7 @@ public class Dishes extends Item {
     }
 
     @Override
-    public boolean equals(Object object) { // override equals
+    public boolean equals(Object object) {
         if (object == this) {
             return true;
         }

@@ -24,7 +24,7 @@ public class DryRation extends Food{
     }
 
     @Override
-    public boolean equals(Object object) { // override equals
+    public boolean equals(Object object) {
         if (object == this) {
             return true;
         }
@@ -45,6 +45,4 @@ public class DryRation extends Food{
         this.weight += dryRation.weight;
         this.calories += dryRation.calories;
     }
-
-
 }

@@ -7,6 +7,7 @@ public class Pill extends Medicine implements Eatable {
     public enum Type {
         ASPIRIN, LOPERAMIDE
     }
+
     public Pill(Type type, double weight) {
         super(weight);
         name = type.toString();

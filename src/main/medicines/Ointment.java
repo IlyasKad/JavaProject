@@ -38,6 +38,4 @@ public class Ointment extends Medicine{
         Ointment ointment = (Ointment)item;
         this.weight += ointment.weight;
     }
-
-
 }
