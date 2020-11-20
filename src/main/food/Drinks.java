@@ -4,9 +4,9 @@ import travel.Item;
 import travel.Typeable;
 
 public class Drinks extends Food {
-    private double volume;
+    private final double volume;
     public enum Type implements Typeable {
-        MILK, TEA, COFFEE, CAPPUCCINO, WATER
+        MILK, WATER
     }
 
     public Drinks(Type type, double weight, double calories, double volume) {
@@ -26,7 +26,7 @@ public class Drinks extends Food {
     }
 
     @Override
-    public boolean equals(Object object) { // override equals
+    public boolean equals(Object object) {
         if (object == this) {
             return true;
         }

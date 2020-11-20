@@ -32,11 +32,10 @@ public class TravelSet {
             if (item instanceof Backpack) {
                 builder.append(item.toString());
             }
-//            else {
-//                builder.append(item).append("\n");
-//            }
+            else {
+                builder.append(item).append("\n");
+            }
         }
         return builder.toString();
     }
-
 }
