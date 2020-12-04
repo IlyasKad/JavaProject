@@ -128,7 +128,10 @@ public class Backpack extends Item implements Collection<Item>{
     }
 
     public double sumWeightItem(String className) {
-        return items.stream().filter(item -> item.getClass().getName().equals(className)).mapToDouble(item -> item.weight).sum();
+        return items.stream()
+                .filter(item -> item.getClass().getName().equals(className))
+                .mapToDouble(item -> item.weight)
+                .sum();
     }
 
     public Item maxWeightItem() {
@@ -138,19 +141,14 @@ public class Backpack extends Item implements Collection<Item>{
     }
 
     public double averageWeightBackpack() {
-        return items.stream().mapToDouble(item -> item.weight).average().orElse(0);
+        return items.stream()
+                .mapToDouble(item -> item.weight)
+                .average()
+                .orElse(0);
     }
 
-
-//    public OptionalDouble averageWeightBackpack() {
-//        return items.stream().mapToDouble(item -> item.weight).average();
-//    }
-
-
-
     public Map<Boolean, List<Item>> partitionEatableItems(Predicate<Item> condition) {
-        return items.stream().
-                collect(Collectors.partitioningBy(condition));
+        return items.stream().collect(Collectors.partitioningBy(condition));
     }
 
     //    public Map<Boolean, List<Item>> partitionEatableItems() {

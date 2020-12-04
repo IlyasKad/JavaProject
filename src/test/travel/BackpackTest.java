@@ -266,6 +266,34 @@ class BackpackTest {
 
 
     @Test
+    void When_CountSumWeightDrinksInBackpack_TotalWeightDrinks() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+        try {
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("WATER"), 2, 0, 1);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        //WHEN
+        double expected = backpack1.sumWeightItem("food.Drinks");
+        //THEN
+        assertEquals(expected, 12);
+    }
+
+    @Test
+    void When_CountSumWeightDrinksInEmptyBackpack_TotalWeightDrinksEqualZero() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+
+        //WHEN
+        double expected = backpack1.sumWeightItem("food.Drinks");
+        //THEN
+        assertEquals(expected, 0);
+    }
+
+    @Test
     void When_FindHeaviestItem_ItemWithMaxWeight() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
@@ -302,21 +330,18 @@ class BackpackTest {
     }
 
     @Test
-    void When_CountSumWeightDrinksInBackpack_TotalWeightDrinks() {
+    void When_CountAverageWeightEmptyBackpack_AverageWeightOfBackpackZero() {
         //GIVEN
         Backpack backpack1 = new Backpack("backpack1", 10, 25);
-        try {
-            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
-            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
-            backpack1.add(Drinks.Type.valueOf("WATER"), 2, 0, 1);
-        } catch(Exception e){
-            System.out.println(e);
-        }
+
         //WHEN
-        double expected = backpack1.sumWeightItem("food.Drinks");
+        double expected = backpack1.averageWeightBackpack();
+
         //THEN
-        assertEquals(expected, 12);
+        assertEquals(expected, 0);
     }
+
+
 
     @Test
     void When_DefineEatableStateOfItem_MapWithTrueOrFalseValue() {

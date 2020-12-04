@@ -25,6 +25,7 @@ public class Main {
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
             backpack1.add(Drinks.Type.valueOf("WATER"), 1, 0, 1);
+            backpack1.add(Dishes.Type.valueOf("PLATE"), 1);
         } catch(Exception e){
             System.out.println(e);
         }
@@ -58,15 +59,16 @@ public class Main {
         System.out.println("Equals of backpacks: " + backpack2.equalsByContent(backpack3));
 
 
-        System.out.println("+++++++++++++++++++++++++++");
-        System.out.println(backpack3.sumWeightItem("travel.Dishes")); // 1
+        System.out.println("=======================");
 
-        System.out.println(backpack1.maxWeightItem());// 2
+        System.out.println(backpack3.sumWeightItem("travel.Dishes"));
 
-        System.out.println(backpack3.averageWeightBackpack()); // 3
+        System.out.println(backpack3.maxWeightItem());
 
-        System.out.println(backpack3.partitionEatableItems(item -> item instanceof Eatable)); // 4 v1
-//        System.out.println(backpack3.partitionEatableItems()); // 4 v2
+        System.out.println(backpack3.averageWeightBackpack());
+
+        System.out.println(backpack1.partitionEatableItems(item -> item instanceof Eatable)); // v1
+//        System.out.println(backpack3.partitionEatableItems()); // v2
 
 
         System.out.println(travelSet1.sumWeightTravelSet());
@@ -78,36 +80,7 @@ public class Main {
 //        Comparator comparator = Comparator.comparing((Drinks item) -> item.calories);
 //        System.out.println(comparator.compare(item1, item2));
 
-
-
-        /////////////////////////////////
-//        Predicate<ArrayList<Integer>> isPositive = x -> x.get(0) > x.get(1);
-//        ArrayList<Integer> list = new ArrayList<Integer>();
-//        list.add(1);
-//        list.add(2);
-//        System.out.println(isPositive.test(list)); // true
-
-//        BiPredicate<Integer, Integer> isPositive = (x, y) -> x > y;
-//        System.out.println(isPositive.test(1, 2)); // true
-
-
-
-//        BiPredicate<Integer, Integer> isEqual = (x, y) -> {
-//
-//                save("hdhdh.txt");
-//
-//            return false;
-//        };
-//        System.out.println(isEqual.test(0, 0));
-
-
-
-
     }
-//    public static void save(String filename) throws IOException {
-//
-//    }
-
 }
 
 

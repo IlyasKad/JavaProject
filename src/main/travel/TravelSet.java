@@ -37,6 +37,8 @@ public class TravelSet {
 
     public double sumWeightTravelSet() {
         return items.stream()
-                .flatMap(Collection::stream).mapToDouble(item -> item.weight).sum();
+                .flatMap(Collection::stream)
+                .mapToDouble(item -> item.weight)
+                .sum();
     }
 }

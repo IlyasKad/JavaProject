@@ -125,4 +125,26 @@ class TravelSetTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    void When_CountSumWeightOfEmptyTravelSet_TotalWeightOfTravelSetEqualZero() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+        Backpack backpack2 = new Backpack("backpack2", 10, 25);
+        Backpack backpack3 = new Backpack("backpack3", 10, 25);
+
+        TravelSet travelSet1 = new TravelSet();
+
+        travelSet1.addItem(backpack1);
+        travelSet1.addItem(backpack2);
+        travelSet1.addItem(backpack3);
+
+        //WHEN
+        double expected = travelSet1.sumWeightTravelSet();
+        double actual = 0;
+
+        //THEN
+        assertEquals(expected, actual);
+
+    }
 }
