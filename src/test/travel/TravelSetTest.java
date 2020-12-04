@@ -86,4 +86,43 @@ class TravelSetTest {
         boolean actual = travelSet1.addItem(backpack1);;
         assertFalse(actual);
     }
+
+    @Test
+    void When_CountSumWeightOfTravelSet_TotalWeightOfTravelSet() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+        Backpack backpack2 = new Backpack("backpack2", 10, 25);
+        Backpack backpack3 = new Backpack("backpack3", 10, 25);
+
+        TravelSet travelSet1 = new TravelSet();
+
+        try {
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("WATER"), 1, 0, 1);
+            backpack2.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack2.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack2.add(Drinks.Type.valueOf("CAPPUCCINO"), 1, 1000, 1);
+            backpack2.add(Dishes.Type.valueOf("PLATE"),3);
+            backpack3.add(Drinks.Type.valueOf("CAPPUCCINO"), 6, 1000, 1);
+            backpack3.add(Drinks.Type.valueOf("MILK"), 3, 1000, 1);
+            backpack3.add(Drinks.Type.valueOf("MILK"), 3, 1000, 1);
+            backpack3.add(Dishes.Type.valueOf("PLATE"),2);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
+
+        travelSet1.addItem(backpack1);
+        travelSet1.addItem(backpack2);
+        travelSet1.addItem(backpack3);
+
+        //WHEN
+        double expected = travelSet1.sumWeightTravelSet();
+        double actual = 39;
+
+        //THEN
+        assertEquals(expected, actual);
+
+    }
 }

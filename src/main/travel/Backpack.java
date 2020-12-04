@@ -3,10 +3,11 @@ package travel;
 import food.Drinks;
 import food.DryRation;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class Backpack extends Item{
+public class Backpack extends Item implements Collection<Item>{
     public StateBackpack stateBackpack;
     private final ArrayList<Item> items;
     private final double maxWeight;
@@ -125,4 +126,104 @@ public class Backpack extends Item{
             addItem(i);
         }
     }
+
+    public double sumWeightItem(String className) {
+        return items.stream().filter(item -> item.getClass().getName().equals(className)).mapToDouble(item -> item.weight).sum();
+    }
+
+    public Item maxWeightItem() {
+        return items.stream()
+                .max(Comparator.comparing(item -> item.weight))
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public double averageWeightBackpack() {
+        return items.stream().mapToDouble(item -> item.weight).average().orElse(0);
+    }
+
+
+//    public OptionalDouble averageWeightBackpack() {
+//        return items.stream().mapToDouble(item -> item.weight).average();
+//    }
+
+
+
+    public Map<Boolean, List<Item>> partitionEatableItems(Predicate<Item> condition) {
+        return items.stream().
+                collect(Collectors.partitioningBy(condition));
+    }
+
+    //    public Map<Boolean, List<Item>> partitionEatableItems() {
+//        return items.stream().
+//                collect(Collectors.partitioningBy(item -> item instanceof Dishes));
+//    }
+
+    @Override
+    public int size() {
+        return items.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return items.contains(o);
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return items.iterator();
+    }
+
+    @Override
+    public Object[] toArray() {
+        return items.toArray();
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        return items.toArray(a);
+    }
+
+    @Override
+    public boolean add(Item item) {
+        return items.add(item);
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        return items.remove(o);
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return items.containsAll(c);
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends Item> c) {
+        return items.addAll(c);
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return items.removeAll(c);
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return items.retainAll(c);
+    }
+
+    @Override
+    public void clear() {
+        items.clear();
+    }
 }
+
+
+
+
