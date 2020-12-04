@@ -4,7 +4,7 @@ import food.Drinks;
 import food.DryRation;
 import org.junit.jupiter.api.Test;
 
-import java.util.Iterator;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -262,5 +262,107 @@ class BackpackTest {
         Item actual = iterator.next();
         Item expected = new Drinks(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
         assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void When_CountSumWeightDrinksInBackpack_TotalWeightDrinks() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+        try {
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("WATER"), 2, 0, 1);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        //WHEN
+        double expected = backpack1.sumWeightItem("food.Drinks");
+        //THEN
+        assertEquals(expected, 12);
+    }
+
+    @Test
+    void When_CountSumWeightDrinksInEmptyBackpack_TotalWeightDrinksEqualZero() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+
+        //WHEN
+        double expected = backpack1.sumWeightItem("food.Drinks");
+        //THEN
+        assertEquals(expected, 0);
+    }
+
+    @Test
+    void When_FindHeaviestItem_ItemWithMaxWeight() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+        try {
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("WATER"), 1, 0, 1);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
+        //WHEN
+        Item expected = backpack1.maxWeightItem();
+        //THEN
+        Item actual = new Drinks(Drinks.Type.valueOf("MILK"), 10, 2000, 2);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void When_CountAverageWeightBackpack_AverageWeightOfBackpack() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+        try {
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+            backpack1.add(Drinks.Type.valueOf("WATER"), 2, 0, 1);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        //WHEN
+        double expected = backpack1.averageWeightBackpack();
+        //THEN
+        assertEquals(expected, 6);
+    }
+
+    @Test
+    void When_CountAverageWeightEmptyBackpack_AverageWeightOfBackpackZero() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+
+        //WHEN
+        double expected = backpack1.averageWeightBackpack();
+
+        //THEN
+        assertEquals(expected, 0);
+    }
+
+
+
+    @Test
+    void When_DefineEatableStateOfItem_MapWithTrueOrFalseValue() {
+        //GIVEN
+        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+        Item item1 = new Drinks(Drinks.Type.valueOf("MILK"), 1, 2000, 2);
+        Item item2 = new Drinks(Drinks.Type.valueOf("WATER"), 1, 2000, 2);
+        Item item3 = new Dishes(Dishes.Type.valueOf("PLATE"), 1);
+        Item item4 = new Dishes(Dishes.Type.valueOf("PLATE"), 1);
+        backpack1.add(item1);
+        backpack1.add(item2);
+        backpack1.add(item3);
+        backpack1.add(item4);
+
+        //WHEN
+        Map<Boolean, List<Item>> actual = backpack1.partitionEatableItems(item -> item instanceof Eatable);
+
+        //THEN
+        Map<Boolean, List<Item>> expected = new HashMap<>(2);
+        expected.put(Boolean.TRUE, Arrays.asList(item1, item2));
+        expected.put(Boolean.FALSE, Arrays.asList(item3, item4));
+        assertEquals(expected,actual);
     }
 }

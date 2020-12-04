@@ -1,15 +1,16 @@
 package travel;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class TravelSet {
-    public ArrayList<Item> items;
+    public ArrayList<Backpack> items;
 
     public TravelSet() {
         this.items = new ArrayList<>();
     }
 
-    public boolean addItem(Item item) {
+    public boolean addItem(Backpack item) {
         if (items.contains(item)) {
             return false;
         }
@@ -17,7 +18,7 @@ public class TravelSet {
         return true;
     }
 
-    public boolean deleteItem(Item item) {
+    public boolean deleteItem(Backpack item) {
         if (items.contains(item)) {
             items.remove(item);
             return true;
@@ -28,14 +29,16 @@ public class TravelSet {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("List of travel set items: \n");
-        for (Item item: items) {
-            if (item instanceof Backpack) {
-                builder.append(item.toString());
-            }
-            else {
-                builder.append(item).append("\n");
-            }
+        for (Backpack item: items) {
+            builder.append(item.toString());
         }
         return builder.toString();
+    }
+
+    public double sumWeightTravelSet() {
+        return items.stream()
+                .flatMap(Collection::stream)
+                .mapToDouble(item -> item.weight)
+                .sum();
     }
 }

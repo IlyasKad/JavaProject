@@ -6,7 +6,7 @@ import travel.Typeable;
 public class Drinks extends Food {
     private final double volume;
     public enum Type implements Typeable {
-        MILK, WATER
+        MILK, WATER, CAPPUCCINO
     }
 
     public Drinks(Type type, double weight, double calories, double volume) {
