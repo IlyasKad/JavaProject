@@ -1,7 +1,6 @@
 package travel;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class TravelSet {
     public ArrayList<Backpack> items;
@@ -36,9 +35,10 @@ public class TravelSet {
     }
 
     public double sumWeightTravelSet() {
-        return items.stream()
-                .flatMap(Collection::stream)
-                .mapToDouble(item -> item.weight)
-                .sum();
+        double sum = 0;
+        for (Backpack backpack: items) {
+            sum += backpack.getWeight();
+        }
+        return sum;
     }
 }

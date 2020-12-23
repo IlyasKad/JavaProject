@@ -10,17 +10,17 @@ public class DryRation extends Food{
 
     public DryRation(Type type, double weight, double calories) {
         super(weight, calories);
-        name = type.toString();
+        setName(type.toString());
     }
 
     @Override
     public void eat(double weightToEat) {
-        weight = weight - weightToEat;
+        setWeight(getWeight() - weightToEat);
     }
 
     @Override
     public String toString() {
-        return "Dry ration: " + name + "," + weight + "," + calories + ".";
+        return "Dry ration: " + getName() + "," + getWeight() + "," + getCalories() + ".";
     }
 
     @Override
@@ -33,7 +33,7 @@ public class DryRation extends Food{
         }
 
         DryRation dryRation = (DryRation) object;
-        if (dryRation.name.equals(name) && dryRation.weight == weight && dryRation.calories == calories) {
+        if (dryRation.getName().equals(getName()) && dryRation.getWeight() == getWeight() && dryRation.getCalories() == getCalories()) {
             return  true;
         }
         return false;
@@ -42,7 +42,7 @@ public class DryRation extends Food{
     @Override
     public void sumItem(Item item) {
         DryRation dryRation = (DryRation) item;
-        this.weight += dryRation.weight;
-        this.calories += dryRation.calories;
+        setWeight(this.getWeight() + dryRation.getWeight());
+        setCalories( this.getCalories() + dryRation.getCalories());
     }
 }

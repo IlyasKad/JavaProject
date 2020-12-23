@@ -10,17 +10,17 @@ public class Pill extends Medicine implements Eatable {
 
     public Pill(Type type, double weight) {
         super(weight);
-        name = type.toString();
+        setName(type.toString());
     }
 
     @Override
     public void eat(double weightToEat) {
-        weight = weight - weightToEat;
+        setWeight(getWeight() - weightToEat);
     }
 
     @Override
     public String toString() {
-        return "Pill: " + name + "," + weight + ".";
+        return "Pill: " + getName() + "," + getWeight() + ".";
     }
 
     @Override
@@ -33,7 +33,7 @@ public class Pill extends Medicine implements Eatable {
         }
 
         Pill pill = (Pill) object;
-        if (pill.name.equals(name) && pill.weight == weight) {
+        if (pill.getName().equals(getName()) && pill.getWeight() == getWeight()) {
             return  true;
         }
         return false;
@@ -42,6 +42,6 @@ public class Pill extends Medicine implements Eatable {
     @Override
     public void sumItem(Item item) {
         Pill pill = (Pill)item;
-        this.weight += pill.weight;
+        setWeight(this.getWeight() + pill.getWeight());
     }
 }
