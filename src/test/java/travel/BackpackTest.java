@@ -56,7 +56,7 @@ class BackpackTest {
         //THEN
         String expected = "List of backpack4 items: \n" +
                 "\tDrink: MILK,5.0,1000.0,1.0.\n";
-
+        System.out.println(actual);
         assertEquals(expected, actual);
     }
 
@@ -160,26 +160,26 @@ class BackpackTest {
         assertTrue(backpack1.equalsByContent(backpack3));
     }
 
-    @Test
-    void When_ObjectNull_EqualsFalse() {
-        //GIVEN
-        Backpack backpack1 = new Backpack("backpack1", 10, 25);
-        Backpack backpack3 = null;
-
-        try {
-            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
-            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
-            backpack1.add(Drinks.Type.valueOf("CAPPUCCINO"), 1, 1000, 1);
-        } catch(Exception ex){ ex.printStackTrace(); }
-
-
-        //WHEN
-        boolean actual = backpack1.equalsByContent(backpack3);
-
-        //THEN
-        assertFalse(actual);
-
-    }
+//    @Test
+//    void When_ObjectNull_EqualsFalse() {
+//        //GIVEN
+//        Backpack backpack1 = new Backpack("backpack1", 10, 25);
+//        Backpack backpack3 = null;
+//
+//        try {
+//            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+//            backpack1.add(Drinks.Type.valueOf("MILK"), 5, 1000, 1);
+//            backpack1.add(Drinks.Type.valueOf("CAPPUCCINO"), 1, 1000, 1);
+//        } catch(Exception ex){ ex.printStackTrace(); }
+//
+//
+//        //WHEN
+//        boolean actual = backpack1.equalsByContent(backpack3);
+//
+//        //THEN
+//        assertFalse(actual);
+//
+//    }
 
 
     @Test

@@ -19,7 +19,7 @@ class PillTest {
 
         //THEN
         double actual = weight - weightToEat;
-        double expected = pill1.weight;
+        double expected = pill1.getWeight();
         assertEquals(expected, actual);
     }
 

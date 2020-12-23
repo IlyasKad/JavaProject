@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void test1() {
         Tourist tourist1 = new Tourist("Nick");
         Tourist tourist2 = new Tourist("Nick");
         Tourist tourist3 = new Tourist("Fox");
@@ -72,13 +72,40 @@ public class Main {
 
 
         System.out.println(travelSet1.sumWeightTravelSet());
+    }
+
+//    public static void test2() {
+//        ArrayList mockList = Mockito.mock(ArrayList.class);
+//        mockList.add("one");
+//        when(mockList.contains("one")).thenReturn(true);
+//        System.out.println(mockList.contains("one"));
+//        Mockito.verify(mockList).add("one");
+//        System.out.println(mockList.size());
+//        when(mockList.size()).thenReturn(100);
+//        System.out.println(mockList.size());
+//    }
+
+    public static void main(String[] args) {
+        test1();
+
+//        Drinks drinks = new Drinks(Drinks.Type.MILK, 30, 10, 1);
+//        Drinks drinksSpy = Mockito.spy(drinks);
+//
+//
+//        Mockito.when(drinksSpy.getWeight()).thenReturn(4.0);
+//
+//        drinks.setCalories(100);
+//        System.out.println(drinksSpy.getCalories());
+//        System.out.println(drinksSpy.getWeight2());
+//        System.out.println(drinksSpy.getWeight());
+//        System.out.println(drinksSpy.toString());
 
 
-//        Item item1 = new Drinks(Drinks.Type.valueOf("CAPPUCCINO"), 15, 1000, 1);
-//        Item item2 = new Drinks(Drinks.Type.valueOf("CAPPUCCINO"), 10, 1070, 1);
-//        System.out.println();
-//        Comparator comparator = Comparator.comparing((Drinks item) -> item.calories);
-//        System.out.println(comparator.compare(item1, item2));
+//        A a = new A();
+//        A aSpy = Mockito.spy(a);
+//        Mockito.when(aSpy.method1()).thenReturn(5l);
+
+
 
     }
 }

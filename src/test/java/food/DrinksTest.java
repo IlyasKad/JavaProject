@@ -19,7 +19,7 @@ class DrinksTest {
 
         //THEN
         double actual = weight - weightToEat;
-        double expected = milk1.weight;
+        double expected = milk1.getWeight();
         assertEquals(expected, actual);
     }
 
