@@ -7,12 +7,12 @@ public class Dishes extends Item {
 
     public Dishes(Type type, double weight) {
         super(weight);
-        name = type.toString();
+        setName(type.toString());
     }
 
     @Override
     public String toString() {
-        return "Dishes: " + name + "," + weight + ".";
+        return "Dishes: " + getName() + "," + getWeight() + ".";
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Dishes extends Item {
         }
 
         Dishes dishes = (Dishes) object;
-        if (dishes.name.equals(name) && dishes.weight == weight) {
+        if (dishes.getName().equals(getName()) && dishes.getWeight() == getWeight()) {
             return  true;
         }
         return false;
@@ -34,6 +34,6 @@ public class Dishes extends Item {
     @Override
     public void sumItem(Item item) {
         Dishes dishes = (Dishes) item;
-        this.weight += dishes.weight;
+        setWeight(getWeight() + dishes.getWeight());
     }
 }

@@ -9,12 +9,12 @@ public class Ointment extends Medicine{
 
     public Ointment(Type type, double weight) {
         super(weight);
-        name = type.toString();
+        setName(type.toString());
     }
 
     @Override
     public String toString() {
-        return "Ointment: " + name + "," + weight + ".";
+        return "Ointment: " + getName() + "," + getWeight() + ".";
     }
 
     @Override
@@ -27,7 +27,7 @@ public class Ointment extends Medicine{
         }
 
         Ointment ointment = (Ointment) object;
-        if (ointment.name.equals(name) && ointment.weight == weight) {
+        if (ointment.getName().equals(getName()) && ointment.getWeight() == getWeight()) {
             return  true;
         }
         return false;
@@ -36,6 +36,6 @@ public class Ointment extends Medicine{
     @Override
     public void sumItem(Item item) {
         Ointment ointment = (Ointment)item;
-        this.weight += ointment.weight;
+        setWeight(this.getWeight() + ointment.getWeight());
     }
 }

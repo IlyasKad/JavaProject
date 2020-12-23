@@ -19,7 +19,7 @@ class DryRationTest {
 
         //THEN
         double actual = weight - weightToEat;
-        double expected = bread1.weight;
+        double expected = bread1.getWeight();
         assertEquals(expected, actual);
     }
 

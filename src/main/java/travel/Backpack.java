@@ -16,10 +16,14 @@ public class Backpack extends Item implements Collection<Item>{
     public Backpack(String name, double weight, double maxWeight) {
         super(weight);
         this.stateBackpack = StateBackpack.EMPTY;
-        this.name = name;
+        setName(name);
         items = new ArrayList<>();
         this.maxWeight = maxWeight;
         whoCarry = new ArrayList<>();
+    }
+
+    ArrayList<Item> getItems() {
+        return items;
     }
 
     public Iterator<Item> getIterator() {
@@ -44,15 +48,17 @@ public class Backpack extends Item implements Collection<Item>{
         addItem(item);
     }
 
-    private void addItem(Item item) throws ExceptionLimitOversize {
+    void addItem(Item item) throws ExceptionLimitOversize {
         if (item == null) {
             return;
         }
-        if (this.weight + item.weight > maxWeight ) {
-            throw new ExceptionLimitOversize(weight, maxWeight);
+        double commonWeight = this.getWeight() + item.getWeight();
+        if (commonWeight > maxWeight ) {
+            throw new ExceptionLimitOversize(getWeight(), maxWeight);
         }
-        weight += item.weight;
-        Item itemFound = items.stream().filter(tempItem -> tempItem.name.equals(item.name)).findFirst().orElse(null);
+        setWeight(commonWeight);
+        Item itemFound = items.stream().filter(tempItem ->
+                tempItem.getName().equals(item.getName())).findFirst().orElse(null);
         if (itemFound != null) {
             itemFound.sumItem(item);
         } else {
@@ -64,7 +70,7 @@ public class Backpack extends Item implements Collection<Item>{
     private void changeState() {
         if (items.size() == 0) {
             stateBackpack = StateBackpack.EMPTY;
-        } else if (weight == maxWeight) {
+        } else if (getWeight() == maxWeight) {
             stateBackpack = StateBackpack.FULL;
         } else {
             stateBackpack = StateBackpack.NOT_FULL;
@@ -72,10 +78,11 @@ public class Backpack extends Item implements Collection<Item>{
     }
 
     public boolean deleteItem(Typeable type) {
-        Item itemFound = items.stream().filter(tempItem -> tempItem.name.equals(type.toString())).findFirst().orElse(null);
+        Item itemFound = items.stream()
+                .filter(tempItem -> tempItem.getName().equals(type.toString())).findFirst().orElse(null);
         if (itemFound != null) {
             items.remove(itemFound);
-            weight -= itemFound.weight;
+            setWeight(getWeight() - itemFound.getWeight());
             return true;
         }
         changeState();
@@ -84,9 +91,9 @@ public class Backpack extends Item implements Collection<Item>{
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder("List of " + name + " items: \n");
+        StringBuilder builder = new StringBuilder("List of " + getName() + " items: \n");
         if (items.size() == 0) {
-            return "List of " + name + " is empty\n";
+            return "List of " + getName() + " is empty\n";
         }
         for (Item item: items) {
             builder.append("\t" + item).append("\n");
@@ -94,16 +101,7 @@ public class Backpack extends Item implements Collection<Item>{
         return builder.toString();
     }
 
-    public boolean equalsByContent(Object object) {
-        if (object == this) {
-            return true;
-        }
-
-        if (object == null || object.getClass() != this.getClass()) {
-            return false;
-        }
-
-        Backpack backpack = (Backpack) object;
+    public boolean equalsByContent(Backpack backpack) {
         if (backpack.items.size() != this.items.size()) {
             return false;
         }
@@ -130,19 +128,19 @@ public class Backpack extends Item implements Collection<Item>{
     public double sumWeightItem(String className) {
         return items.stream()
                 .filter(item -> item.getClass().getName().equals(className))
-                .mapToDouble(item -> item.weight)
+                .mapToDouble(item -> item.getWeight())
                 .sum();
     }
 
     public Item maxWeightItem() {
         return items.stream()
-                .max(Comparator.comparing(item -> item.weight))
+                .max(Comparator.comparing(item -> item.getWeight()))
                 .orElseThrow(NoSuchElementException::new);
     }
 
     public double averageWeightBackpack() {
         return items.stream()
-                .mapToDouble(item -> item.weight)
+                .mapToDouble(item -> item.getWeight())
                 .average()
                 .orElse(0);
     }
@@ -150,11 +148,6 @@ public class Backpack extends Item implements Collection<Item>{
     public Map<Boolean, List<Item>> partitionEatableItems(Predicate<Item> condition) {
         return items.stream().collect(Collectors.partitioningBy(condition));
     }
-
-    //    public Map<Boolean, List<Item>> partitionEatableItems() {
-//        return items.stream().
-//                collect(Collectors.partitioningBy(item -> item instanceof Dishes));
-//    }
 
     @Override
     public int size() {
