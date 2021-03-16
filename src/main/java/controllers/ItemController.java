@@ -1,26 +1,23 @@
 package controllers;
 
-import models.database.ItemRepository;
-import models.database.SubcategoryRepository;
+import models.Item;
+import services.ItemService;
 
-import java.sql.SQLException;
 
 public class ItemController {
-    private ItemRepository itemRepository;
-    private SubcategoryRepository subcategoryRepository;
 
-    public ItemController(ItemRepository itemRepository) throws SQLException {
-        this.itemRepository = new ItemRepository();
+    private ItemService itemService;
+
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
     }
 
-    public String create(String itemName, int subcategoryId){
-        String message;
-        try {
-            itemRepository.create(itemName, subcategoryId);
-            message = "Item is created";
-        } catch (SQLException throwables) {
-            message = "Error in creating items";
-        }
-        return message;
+    public void create(Item item) {
+        itemService.create(item);
     }
+
+    public Item findById(int id) {
+        return  itemService.findById(id);
+    }
+
 }
