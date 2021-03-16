@@ -1,4 +1,4 @@
-package models.database;
+package repository;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -13,17 +13,9 @@ public class Database {
     private String url;
     private String login;
     private String password;
-    //public ItemRepository items;
 
-    private Database(String url, String login, String password) throws SQLException {
-        this.url = url;
-        this.login = login;
-        this.password = password;
-        connection = DriverManager.getConnection(url, login, password);
-        // items = new ItemRepository(connection);
-    }
-
-    private Database() throws SQLException {
+    private Database() throws SQLException
+    {
         JSONParser parser = new JSONParser();
         try {
             FileReader fr = new FileReader("./src/main/java/config.json");
@@ -44,13 +36,6 @@ public class Database {
         }
         return db;
     }
-
-//    public static Database getDatabase(String url, String login, String password) throws SQLException {
-//        if (db == null) {
-//            db = new Database(url, login, password);
-//        }
-//        return db;
-//    }
 
     public Connection getConnection() {
         return connection;
