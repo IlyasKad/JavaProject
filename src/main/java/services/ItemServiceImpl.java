@@ -3,8 +3,6 @@ package services;
 import models.Item;
 import repository.ItemRepository;
 
-import java.sql.SQLException;
-
 public class ItemServiceImpl implements ItemService {
 
     ItemRepository itemRepository;
