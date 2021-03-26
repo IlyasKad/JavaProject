@@ -7,5 +7,4 @@ public class Order {
     public String payment;
     public boolean isPaid;
     public User user;
-
 }

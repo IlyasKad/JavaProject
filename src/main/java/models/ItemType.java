@@ -5,5 +5,4 @@ public class ItemType {
     public Category category;
     // public int categoryId;
     public String name;
-
 }

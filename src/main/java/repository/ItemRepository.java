@@ -3,21 +3,24 @@ package repository;
 import models.Category;
 import models.Item;
 import models.ItemType;
+import org.springframework.stereotype.Repository;
 
 
 import java.sql.*;
 
+@Repository
 public class ItemRepository {
 
-    private Connection connection;
-    private Database database;
+    private final Connection connection;
+    private final Database database;
 
     public ItemRepository() throws SQLException {
         database = Database.getDatabase();
         connection = database.getConnection();
     }
 
-    public void create(Item item) {
+    public void create(Item item)
+    {
         try{
             String sqlCommand = "INSERT INTO items (Description, ItemTypeId, Weight, Calories) VALUES";
             sqlCommand += String.format(" ('%s' , '%s' , '%s', '%s')",
@@ -28,6 +31,7 @@ public class ItemRepository {
             e.printStackTrace();
         }
     }
+
 
     public Item findById(int id) {
         Item item = null;
@@ -42,6 +46,7 @@ public class ItemRepository {
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
+
                 Category category = new Category();
                 category.id = resultSet.getInt("categoriesId");
                 category.name = resultSet.getString("categoriesName");
@@ -71,4 +76,9 @@ public class ItemRepository {
         }
         return item;
     }
+
+
+
+
+
 }
