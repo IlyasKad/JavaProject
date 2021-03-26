@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class ItemRepository {
 
-    private Connection connection;
+    private final Connection connection;
     private Database database;
 
 //    public ItemRepository(Connection connection) {
