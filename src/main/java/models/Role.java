@@ -1,6 +1,6 @@
 package models;
 
-public class Category{
+public class Role {
     public int id;
     public String name;
 }

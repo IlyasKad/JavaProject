@@ -5,5 +5,4 @@ public class ItemsQuantity {
     public Item item;
     public Backpack backpack;
     public int quantity;
-
 }

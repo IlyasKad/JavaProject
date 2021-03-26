@@ -14,11 +14,10 @@ public class Database {
     private String login;
     private String password;
 
-    private Database() throws SQLException
-    {
+    private Database() throws SQLException {
         JSONParser parser = new JSONParser();
         try {
-            FileReader fr = new FileReader("./src/main/java/config.json");
+            FileReader fr = new FileReader("./src/main/config.json");
             JSONObject config = (JSONObject) parser.parse(fr);
             JSONObject databaseConfig = (JSONObject) config.get("database");
             url = (String) databaseConfig.get("url");
