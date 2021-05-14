@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BackpackRepository extends JpaRepository<Backpack, Integer> {
     Backpack findFirstByOrderByIdAsc();
+    boolean existsById(int id);
 }

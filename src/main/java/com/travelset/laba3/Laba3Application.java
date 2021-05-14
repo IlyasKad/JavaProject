@@ -1,6 +1,7 @@
 package com.travelset.laba3;
 
 import java.sql.Timestamp;
+import java.util.List;
 //import com.travelset.laba3.controllers.OrderItemController;
 import com.travelset.laba3.controllers.OrderItemController;
 import com.travelset.laba3.model.entity.*;
@@ -137,14 +138,26 @@ public class Laba3Application implements CommandLineRunner {
 		System.out.println(applicationContext.getDisplayName());
 		System.out.println(applicationContext.getId());
 
-		//seed();
+//		seed();
 
-		Category foodCategory = new Category();
-		foodCategory.setName("Food");
-		categoryRepository.save(foodCategory);
-
+//		Category foodCategory = new Category();
+//		foodCategory.setName("Food");
+//		categoryRepository.save(foodCategory);
 		//categoryRepository.findById(111);
 		// orderItemController.createOrUpdateOrderItem(1,1,5);
+
+
+		Order order = orderRepository.findById(1).get();
+		Item item = itemRepository.findById(1).get();
+		OrderItem orderItem = orderItemController.getByOrderAndItem(order, item);
+		System.out.println(orderItem.getQuantity());
+
+
+//		List<OrderItem> orderItemList = orderItemRepository.findByOrder(order);
+//		for (OrderItem orderItem: orderItemList) {
+//			System.out.println(orderItem.getId());
+//		}
+//		System.out.println(orderItemList);
 
 	}
 

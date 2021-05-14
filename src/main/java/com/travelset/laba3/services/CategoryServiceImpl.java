@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 @Transactional
 public class CategoryServiceImpl implements  CategoryService{
+
     private final CategoryRepository categoryRepository;
 
     @Autowired
@@ -37,7 +38,7 @@ public class CategoryServiceImpl implements  CategoryService{
 
     @Override
     public void deleteCategory(int id) {
-        if(!categoryRepository.existsCategoryById(id)) {
+        if(!categoryRepository.existsById(id)) {
             throw new NoSuchEntityElementException(Category.class,id);
         }
         categoryRepository.deleteById(id);
@@ -45,9 +46,13 @@ public class CategoryServiceImpl implements  CategoryService{
 
     @Override
     public Category updateCategory(Category category) {
-        if(!categoryRepository.existsCategoryById(category.getId())) {
+        if(!categoryRepository.existsById(category.getId())) {
             throw new NoSuchEntityElementException(Category.class, category.getId());
         }
         return categoryRepository.save(category);
     }
+
+
+
+
 }
