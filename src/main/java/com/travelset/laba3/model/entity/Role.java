@@ -13,7 +13,6 @@ public class Role {
     private Collection<User> users;
     private Set<Permission> permissions = new HashSet<>();
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")

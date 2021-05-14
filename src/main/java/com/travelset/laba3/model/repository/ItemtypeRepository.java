@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ItemtypeRepository extends JpaRepository<Itemtype, Integer> {
     Itemtype findFirstByOrderByIdAsc();
+    boolean existsById(int id);
 }
