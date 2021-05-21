@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 @Transactional
 public class ItemServiceImpl implements ItemService{
-    private final ItemRepository itemRepository;
+    private ItemRepository itemRepository;
 
     @Autowired
     public ItemServiceImpl(ItemRepository itemRepository) {
@@ -50,4 +50,6 @@ public class ItemServiceImpl implements ItemService{
         }
         return itemRepository.save(item);
     }
+
+
 }

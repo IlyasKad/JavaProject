@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class OrderServiceImpl implements  OrderService{
-    private final OrderRepository orderRepository;
+    private OrderRepository orderRepository;
 
     @Autowired
     public OrderServiceImpl(OrderRepository orderRepository) {
@@ -46,4 +46,5 @@ public class OrderServiceImpl implements  OrderService{
         }
         return orderRepository.save(order);
     }
+
 }

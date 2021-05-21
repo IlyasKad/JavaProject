@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+
 @Controller
 public class CategoryController {
-    private final CategoryService categoryService;
+
+    private CategoryService categoryService;
 
     @Autowired
     public CategoryController(CategoryService categoryService) {
@@ -36,4 +38,7 @@ public class CategoryController {
     public Category updateCategory(Category category){
         return categoryService.updateCategory(category);
     }
+
+
+
 }
