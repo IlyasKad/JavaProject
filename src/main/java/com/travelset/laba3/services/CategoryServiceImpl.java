@@ -13,7 +13,7 @@ import java.util.List;
 @Transactional
 public class CategoryServiceImpl implements  CategoryService{
 
-    private final CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
     public CategoryServiceImpl(CategoryRepository categoryRepository) {

@@ -133,7 +133,6 @@ public class OrderItemControllerTest {
         orderItemController.createOrUpdateOrderItem(order.getId(),item.getId(),5);
         OrderItem orderItem = orderItemController.getByOrderAndItem(order, item);
         Assertions.assertEquals(orderItem.getQuantity(), 5);
-        orderItemController.deleteOrderitem(orderItem.getId());
     }
 
 
@@ -146,4 +145,7 @@ public class OrderItemControllerTest {
         OrderItem orderItem = orderItemController.getByOrderAndItem(order, item);
         Assertions.assertEquals(orderItem.getQuantity(), 8);
     }
+
+
+
 }

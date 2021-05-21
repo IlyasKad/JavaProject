@@ -9,7 +9,8 @@ import java.util.List;
 
 @Controller
 public class BackpackController {
-    private final BackpackService backpackService;
+
+    private BackpackService backpackService;
 
     @Autowired
     public BackpackController(BackpackService backpackService) {
@@ -35,4 +36,7 @@ public class BackpackController {
     public Backpack updateBackpack(Backpack backpack){
         return backpackService.updateBackpack(backpack);
     }
+
+
+
 }

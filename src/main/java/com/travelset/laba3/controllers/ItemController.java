@@ -9,7 +9,8 @@ import java.util.List;
 
 @Controller
 public class ItemController {
-    private final ItemService itemService;
+
+    private ItemService itemService;
 
     @Autowired
     public ItemController(ItemService itemService) {
@@ -35,4 +36,7 @@ public class ItemController {
     public Item updateItem(Item item){
         return itemService.updateItem(item);
     }
+
+
+
 }

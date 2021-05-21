@@ -2,6 +2,8 @@ package com.travelset.laba3.model.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "categories")
@@ -21,7 +23,9 @@ public class Category {
         this.id = id;
     }
 
-    @Basic
+
+    @NotNull
+    @NotEmpty
     @Column(name = "Name", unique = true)
     public String getName() {
         return name;
