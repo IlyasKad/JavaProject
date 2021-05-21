@@ -17,9 +17,9 @@ import java.util.List;
 @Transactional
 public class OrderItemServiceImpl implements OrderItemService {
 
-    private final OrderItemRepository orderItemRepository;
-    private final OrderRepository orderRepository;
-    private final ItemRepository itemRepository;
+    private OrderItemRepository orderItemRepository;
+    private OrderRepository orderRepository;
+    private ItemRepository itemRepository;
 
     @Autowired
     public OrderItemServiceImpl(OrderItemRepository orderItemRepository,

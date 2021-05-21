@@ -2,6 +2,7 @@ package com.travelset.laba3.controllers;
 
 
 import com.travelset.laba3.context.TestConfig;
+import com.travelset.laba3.exceptions.NoSuchEntityElementException;
 import com.travelset.laba3.model.entity.*;
 import com.travelset.laba3.model.entity.Order;
 import com.travelset.laba3.model.repository.*;
@@ -15,8 +16,8 @@ import java.sql.Timestamp;
 @SpringBootTest(classes = {TestConfig.class})
 @AutoConfigureDataJpa
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class OrderItemControllerTest {
-    // =========================== START SEED ======================================================
+public class OrderControllerIT {
+
     @Autowired
     private BackpackRepository backpackRepository;
 
@@ -47,7 +48,8 @@ public class OrderItemControllerTest {
     @Autowired
     private UserRepository userRepository;
 
-    // =========================== END SEED ======================================================
+//    @Autowired
+//    private OrderController orderController;  // exception
 
 
     @Autowired
@@ -114,38 +116,30 @@ public class OrderItemControllerTest {
         backpack.setWeight(2);
         backpack.setMaxCapacity(15000);
         backpackRepository.save(backpack);
+    }
+
+
+    @Test
+    public void createOrder() {
+        Backpack backpack = backpackRepository.findFirstByOrderByIdAsc();
+        Status status = statusRepository.findFirstByOrderByIdAsc();
+        User user = userRepository.findFirstByOrderByIdAsc();
 
         Order order1 = new Order();
         order1.setBackpack(backpack);
         order1.setCreatedAt(Timestamp.valueOf("2007-09-23 10:10:10.0"));
         order1.setDelivery("by car ");
         order1.setPaid(false);
-        order1.setStatus(openStatus);
-        order1.setUser(user1);
-        orderRepository.save(order1);
+        order1.setStatus(status);
+        order1.setUser(user);
+//        Order orderSaved = orderController.saveOrder(order1);
+//
+//        Order foundOrder = orderController.getOrderById(orderSaved.getId());
+//        Assertions.assertEquals(order1, foundOrder);
+//        orderController.deleteOrder(orderSaved.getId());
+//        Assertions.assertThrows(NoSuchEntityElementException.class,
+//                () -> orderController.getOrderById(orderSaved.getId()));
+
+
     }
-
-
-    @Test
-    public void saveOrderItemFirstTime() {
-        Order order = orderRepository.findFirstByOrderByIdAsc();
-        Item item = itemRepository.findFirstByOrderByIdAsc();
-        orderItemController.createOrUpdateOrderItem(order.getId(),item.getId(),5);
-        OrderItem orderItem = orderItemController.getByOrderAndItem(order, item);
-        Assertions.assertEquals(orderItem.getQuantity(), 5);
-    }
-
-
-    @Test
-    public void saveOrderItemTwice() {
-        Order order = orderRepository.findFirstByOrderByIdAsc();
-        Item item = itemRepository.findFirstByOrderByIdAsc();
-        orderItemController.createOrUpdateOrderItem(order.getId(),item.getId(),5);
-        orderItemController.createOrUpdateOrderItem(order.getId(),item.getId(),3);
-        OrderItem orderItem = orderItemController.getByOrderAndItem(order, item);
-        Assertions.assertEquals(orderItem.getQuantity(), 8);
-    }
-
-
-
 }

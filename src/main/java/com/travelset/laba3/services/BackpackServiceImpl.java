@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional
 public class BackpackServiceImpl implements  BackpackService{
 
-    private final BackpackRepository backpackRepository;
+    private BackpackRepository backpackRepository;
 
     @Autowired
     public BackpackServiceImpl(BackpackRepository backpackRepository) {

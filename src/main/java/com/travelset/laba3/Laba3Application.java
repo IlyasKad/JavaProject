@@ -67,7 +67,6 @@ public class Laba3Application implements CommandLineRunner {
 		SpringApplication.run(Laba3Application.class, args);
 	}
 
-
 	private void seed(){
 		Category foodCategory = new Category();
 		foodCategory.setName("Food");
@@ -132,32 +131,11 @@ public class Laba3Application implements CommandLineRunner {
 
 	}
 
-
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println(applicationContext.getDisplayName());
-		System.out.println(applicationContext.getId());
-
+//		System.out.println(applicationContext.getDisplayName());
+//		System.out.println(applicationContext.getId());
 //		seed();
-
-//		Category foodCategory = new Category();
-//		foodCategory.setName("Food");
-//		categoryRepository.save(foodCategory);
-		//categoryRepository.findById(111);
-		// orderItemController.createOrUpdateOrderItem(1,1,5);
-
-
-		Order order = orderRepository.findById(1).get();
-		Item item = itemRepository.findById(1).get();
-		OrderItem orderItem = orderItemController.getByOrderAndItem(order, item);
-		System.out.println(orderItem.getQuantity());
-
-
-//		List<OrderItem> orderItemList = orderItemRepository.findByOrder(order);
-//		for (OrderItem orderItem: orderItemList) {
-//			System.out.println(orderItem.getId());
-//		}
-//		System.out.println(orderItemList);
 
 	}
 

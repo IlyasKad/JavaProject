@@ -13,7 +13,7 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -51,4 +51,7 @@ public class UserServiceImpl implements UserService {
         }
         return userRepository.save(user);
     }
+
+
+
 }

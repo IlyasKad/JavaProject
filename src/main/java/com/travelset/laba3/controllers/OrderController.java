@@ -1,4 +1,6 @@
 package com.travelset.laba3.controllers;
+
+
 import com.travelset.laba3.model.entity.Order;
 import com.travelset.laba3.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class OrderController {
-    private final OrderService orderService;
+
+    private OrderService orderService;
 
     @Autowired
     public OrderController(OrderService orderService) {
@@ -32,4 +35,7 @@ public class OrderController {
     public Order updateOrder(Order order){
         return orderService.updateOrder(order);
     }
+
+
+
 }

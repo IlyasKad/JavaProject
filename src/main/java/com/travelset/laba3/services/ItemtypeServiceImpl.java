@@ -3,6 +3,7 @@ package com.travelset.laba3.services;
 import com.travelset.laba3.exceptions.NoSuchEntityElementException;
 import com.travelset.laba3.model.entity.Category;
 import com.travelset.laba3.model.entity.Itemtype;
+import com.travelset.laba3.model.repository.CategoryRepository;
 import com.travelset.laba3.model.repository.ItemtypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.List;
 @Transactional
 public class ItemtypeServiceImpl implements ItemtypeService{
 
-    private final ItemtypeRepository itemtypeRepository;
+    private ItemtypeRepository itemtypeRepository;
 
     @Autowired
     public ItemtypeServiceImpl(ItemtypeRepository itemtypeRepository) {
@@ -52,4 +53,6 @@ public class ItemtypeServiceImpl implements ItemtypeService{
         }
         return itemtypeRepository.save(itemtype);
     }
+
+
 }

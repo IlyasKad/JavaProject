@@ -3,6 +3,9 @@ package com.travelset.laba3.model.entity;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+//import java.util.ArrayList;
+//import java.util.Collection;
+//import java.util.List;
 
 @Entity
 @Table(name = "permissions")

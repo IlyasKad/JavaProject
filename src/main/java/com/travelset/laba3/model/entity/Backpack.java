@@ -94,6 +94,8 @@ public class Backpack {
         return result;
     }
 
+
+
     @OneToMany(mappedBy = "status")
     public Collection<Order> getOrders() {
         return orders;

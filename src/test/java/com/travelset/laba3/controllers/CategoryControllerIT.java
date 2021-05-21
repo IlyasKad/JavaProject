@@ -29,7 +29,7 @@ public class CategoryControllerIT {
         categoryController.deleteCategory(medicineCategorySaved.getId());
         Assertions.assertThrows(NoSuchEntityElementException.class,
                 () -> categoryController.getCategoryById(medicineCategorySaved.getId()));
-    }
-}
 
-// Use Transactional TODO !!!!!
+    }
+
+}
