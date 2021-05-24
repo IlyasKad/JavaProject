@@ -10,66 +10,41 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 
 @SpringBootTest(classes = {TestConfig.class})
 @AutoConfigureDataJpa
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Transactional
 public class OrderControllerIT {
 
     @Autowired
     private BackpackRepository backpackRepository;
-
     @Autowired
     private CategoryRepository categoryRepository;
-
     @Autowired
     private ItemRepository itemRepository;
-
     @Autowired
     private ItemtypeRepository itemtypeRepository;
-
     @Autowired
     private OrderItemRepository orderItemRepository;
-
     @Autowired
     private OrderRepository orderRepository;
-
     @Autowired
     private PermissionRepository permissionRepository;
-
     @Autowired
     private RoleRepository roleRepository;
-
     @Autowired
     private StatusRepository statusRepository;
-
     @Autowired
     private UserRepository userRepository;
-
-//    @Autowired
-//    private OrderController orderController;  // exception
-
-
     @Autowired
-    private OrderItemController orderItemController;
+    private OrderController orderController;
 
-    @AfterAll
-    public void deleteAllData(){
-        orderItemRepository.deleteAll();
-        orderRepository.deleteAll();
-        backpackRepository.deleteAll();
-        statusRepository.deleteAll();
-        userRepository.deleteAll();
-        permissionRepository.deleteAll();
-        roleRepository.deleteAll();
-        itemRepository.deleteAll();
-        itemtypeRepository.deleteAll();
-        categoryRepository.deleteAll();
-    }
 
-    @BeforeAll
+    @BeforeEach
     public void createAllData(){
         Category foodCategory = new Category();
         foodCategory.setName("Food");
@@ -118,9 +93,8 @@ public class OrderControllerIT {
         backpackRepository.save(backpack);
     }
 
-
     @Test
-    public void createOrder() {
+    public void createFindDeleteFindAgainOrder() {
         Backpack backpack = backpackRepository.findFirstByOrderByIdAsc();
         Status status = statusRepository.findFirstByOrderByIdAsc();
         User user = userRepository.findFirstByOrderByIdAsc();
@@ -132,13 +106,13 @@ public class OrderControllerIT {
         order1.setPaid(false);
         order1.setStatus(status);
         order1.setUser(user);
-//        Order orderSaved = orderController.saveOrder(order1);
-//
-//        Order foundOrder = orderController.getOrderById(orderSaved.getId());
-//        Assertions.assertEquals(order1, foundOrder);
-//        orderController.deleteOrder(orderSaved.getId());
-//        Assertions.assertThrows(NoSuchEntityElementException.class,
-//                () -> orderController.getOrderById(orderSaved.getId()));
+        Order orderSaved = orderController.saveOrder(order1);
+
+        Order foundOrder = orderController.getOrderById(orderSaved.getId());
+        Assertions.assertEquals(order1, foundOrder);
+        orderController.deleteOrder(orderSaved.getId());
+        Assertions.assertThrows(NoSuchEntityElementException.class,
+                () -> orderController.getOrderById(orderSaved.getId()));
 
 
     }

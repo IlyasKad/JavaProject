@@ -4,9 +4,13 @@ import com.travelset.laba3.exceptions.NoSuchEntityElementException;
 import com.travelset.laba3.model.entity.Order;
 import com.travelset.laba3.model.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
-
+@Service
+@Transactional
 public class OrderServiceImpl implements  OrderService{
     private OrderRepository orderRepository;
 

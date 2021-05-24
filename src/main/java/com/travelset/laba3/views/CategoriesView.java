@@ -11,7 +11,7 @@ import com.vaadin.flow.router.PageTitle;
 
 @Route(value = "categories", layout = MainView.class)
 @PageTitle("Categories")
-public class CategoriesView extends Div{
+public class CategoriesView extends Div {
 
     Grid<Category> grid = new Grid<>(Category.class);
     CategoryController categoryController;
@@ -22,21 +22,16 @@ public class CategoriesView extends Div{
         addClassName("list-view");
         setSizeFull();
         configureGrid();
-
-
         form = new CategoryForm();
         form.addListener(CategoryForm.SaveEvent.class, this::saveCategory);
         form.addListener(CategoryForm.DeleteEvent.class, this::deleteContact);
         form.addListener(CategoryForm.CloseEvent.class, e -> closeEditor());
-
         Div content = new Div(grid, form);
         content.addClassName("content");
         content.setSizeFull();
-
         add(getToolBar(), content);
         updateList();
         closeEditor();
-
     }
 
     private void deleteContact(CategoryForm.DeleteEvent evt) {
@@ -79,12 +74,9 @@ public class CategoriesView extends Div{
         removeClassName("editing");
     }
 
-
-
     private void configureGrid() {
         grid.addClassName("entity-grid");
         grid.setSizeFull();
-//        grid.removeColumnByKey("company");
         grid.setColumns("name");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
         grid.asSingleSelect().addValueChangeListener(evt -> editCategory(evt.getValue()));
@@ -93,7 +85,6 @@ public class CategoriesView extends Div{
     private void updateList() {
         grid.setItems(categoryController.getAllCategories());
     }
-
 
 
 }

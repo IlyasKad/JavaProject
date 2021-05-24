@@ -4,9 +4,11 @@ package com.travelset.laba3.controllers;
 import com.travelset.laba3.model.entity.Order;
 import com.travelset.laba3.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+@Controller
 public class OrderController {
 
     private OrderService orderService;
