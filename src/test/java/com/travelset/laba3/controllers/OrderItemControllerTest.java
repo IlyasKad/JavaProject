@@ -9,65 +9,42 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 
 @SpringBootTest(classes = {TestConfig.class})
 @AutoConfigureDataJpa
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Transactional
 public class OrderItemControllerTest {
     // =========================== START SEED ======================================================
     @Autowired
     private BackpackRepository backpackRepository;
-
     @Autowired
     private CategoryRepository categoryRepository;
-
     @Autowired
     private ItemRepository itemRepository;
-
     @Autowired
     private ItemtypeRepository itemtypeRepository;
-
     @Autowired
     private OrderItemRepository orderItemRepository;
-
     @Autowired
     private OrderRepository orderRepository;
-
     @Autowired
     private PermissionRepository permissionRepository;
-
     @Autowired
     private RoleRepository roleRepository;
-
     @Autowired
     private StatusRepository statusRepository;
-
     @Autowired
     private UserRepository userRepository;
-
     // =========================== END SEED ======================================================
-
 
     @Autowired
     private OrderItemController orderItemController;
 
-    @AfterAll
-    public void deleteAllData(){
-        orderItemRepository.deleteAll();
-        orderRepository.deleteAll();
-        backpackRepository.deleteAll();
-        statusRepository.deleteAll();
-        userRepository.deleteAll();
-        permissionRepository.deleteAll();
-        roleRepository.deleteAll();
-        itemRepository.deleteAll();
-        itemtypeRepository.deleteAll();
-        categoryRepository.deleteAll();
-    }
-
-    @BeforeAll
+    @BeforeEach
     public void createAllData(){
         Category foodCategory = new Category();
         foodCategory.setName("Food");
@@ -112,7 +89,7 @@ public class OrderItemControllerTest {
         backpack.setDescription("simple big backpack for man");
         backpack.setQuantity(100);
         backpack.setWeight(2);
-        backpack.setMaxCapacity(15000);
+        backpack.setMaxCapacity(150000);
         backpackRepository.save(backpack);
 
         Order order1 = new Order();
