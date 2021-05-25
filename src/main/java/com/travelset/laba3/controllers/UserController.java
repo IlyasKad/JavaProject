@@ -3,10 +3,13 @@ package com.travelset.laba3.controllers;
 import com.travelset.laba3.model.entity.User;
 import com.travelset.laba3.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import java.util.List;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.Collection;
 
-@Controller
+
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     private UserService userService;
@@ -16,26 +19,33 @@ public class UserController {
         this.userService = userService;
     }
 
-    public User getUserById(Integer id) {
-        return userService.getUserById(id);
+    @GetMapping("/{id}")
+    @ResponseBody
+    public ResponseEntity<User> getUserById(@PathVariable(value = "id") int userId) {
+        return ResponseEntity.ok(userService.getUserById(userId));
     }
 
-    public List<User> getAllUsers(){
-        return userService.getAllUsers();
+    @GetMapping
+    @ResponseBody
+    public ResponseEntity<Collection<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    public User saveUser(User user){
-        return userService.saveUser(user);
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity<User> saveUser(@RequestBody User user){
+        return ResponseEntity.ok(userService.saveUser(user));
     }
 
-    public void deleteUser(int id){
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable int id){
         userService.deleteUser(id);
     }
 
-    public User updateUser(User user){
-        return userService.updateUser(user);
+    @PutMapping
+    public ResponseEntity<User>  updateUser(@RequestBody User user){
+        return ResponseEntity.ok(userService.updateUser(user));
     }
-
 
 
 }

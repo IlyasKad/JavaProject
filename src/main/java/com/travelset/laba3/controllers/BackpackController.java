@@ -21,7 +21,7 @@ public class BackpackController {
         return backpackService.getBackpackById(id);
     }
 
-    public List<Backpack> getAllCategories(){
+    public List<Backpack> getAllBackpacks(){
         return backpackService.getAllBackpacks();
     }
 
